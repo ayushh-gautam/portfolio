@@ -17,6 +17,7 @@ class _SignUpState extends State<SignUp> {
           height: Constraints.maxHeight * 0.09,
           width: Constraints.maxWidth,
           color: Colors.green,
+          child: Text('hello'),
         );
       })),
     );
