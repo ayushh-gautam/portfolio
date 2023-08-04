@@ -31,15 +31,12 @@ class MyTextField extends StatelessWidget {
         decoration: InputDecoration(
             labelText: text!,
             labelStyle: GoogleFonts.ubuntu(fontSize: 22, color: Colors.white),
-            hoverColor: Colors.black,
             filled: true,
             fillColor: Color(0xFF323232),
             border: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.circular(12))),
       ),
-
-      
     );
   }
 }

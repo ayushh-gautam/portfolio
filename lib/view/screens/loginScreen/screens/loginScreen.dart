@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customLogin.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/textField.dart';
+import 'package:portfolio/view/screens/loginScreen/screens/signupScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -93,11 +94,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Color(0xFF7e7e7e),
                           fontSize: 20,
                           fontWeight: FontWeight.normal),
-                      MyText(
-                          text: ' Signup',
-                          color: Color(0xff03b44a),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500)
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) {
+                            return SignUp();
+                          }));
+                        },
+                        child: MyText(
+                            text: ' Signup',
+                            color: Color(0xff03b44a),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500),
+                      )
                     ],
                   ),
                 )
