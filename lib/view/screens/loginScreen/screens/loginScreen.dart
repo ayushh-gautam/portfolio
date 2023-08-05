@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   MyTextField(
                     text: 'Password',
-                    controller: usernameCOntroller,
+                    controller: passController,
                     left: Constraints.maxWidth * 0.032,
                     right: Constraints.maxWidth * 0.032,
                     top: Constraints.maxHeight * 0.06,

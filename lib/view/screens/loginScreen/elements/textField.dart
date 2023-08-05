@@ -28,6 +28,7 @@ class MyTextField extends StatelessWidget {
       ),
       child: TextFormField(
         controller: controller,
+        style: GoogleFonts.ubuntu(fontSize: 23, color: Colors.white),
         decoration: InputDecoration(
             labelText: text!,
             labelStyle: GoogleFonts.ubuntu(fontSize: 22, color: Colors.white),
