@@ -7,6 +7,7 @@ class MyTextField extends StatelessWidget {
   double? top;
   double? right;
   double? left;
+  bool? obscureText;
 
   TextEditingController? controller;
   MyTextField({
@@ -15,6 +16,7 @@ class MyTextField extends StatelessWidget {
     required this.top,
     required this.right,
     required this.left,
+    required this.obscureText,
     this.controller,
   }) : super(key: key);
 
@@ -28,6 +30,7 @@ class MyTextField extends StatelessWidget {
       ),
       child: TextFormField(
         controller: controller,
+        obscureText: obscureText!,
         style: GoogleFonts.ubuntu(fontSize: 23, color: Colors.white),
         decoration: InputDecoration(
             labelText: text!,

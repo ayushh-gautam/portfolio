@@ -36,18 +36,21 @@ class _SignUpState extends State<SignUp> {
                         fontSize: 64,
                         fontWeight: FontWeight.w600),
                     MyTextField(
+                        obscureText: false,
                         controller: emailController,
                         text: 'Email',
                         top: Constraints.maxHeight * 0.135,
                         right: Constraints.maxWidth * 0.032,
                         left: Constraints.maxWidth * 0.032),
                     MyTextField(
+                        obscureText: true,
                         controller: passController,
                         text: 'Password ',
                         top: Constraints.maxHeight * 0.05,
                         right: Constraints.maxWidth * 0.032,
                         left: Constraints.maxWidth * 0.032),
                     MyTextField(
+                        obscureText: true,
                         controller: confirmPassController,
                         text: 'Confirm password ',
                         top: Constraints.maxHeight * 0.05,

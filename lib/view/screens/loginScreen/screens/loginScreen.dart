@@ -37,6 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.white,
                       fontWeight: FontWeight.w600),
                   MyTextField(
+                    obscureText: false,
                     text: 'Username',
                     controller: usernameCOntroller,
                     left: Constraints.maxWidth * 0.032,
@@ -44,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     top: Constraints.maxHeight * 0.135,
                   ),
                   MyTextField(
+                    obscureText: true,
                     text: 'Password',
                     controller: passController,
                     left: Constraints.maxWidth * 0.032,
