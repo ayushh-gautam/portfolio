@@ -9,79 +9,48 @@ class OnBoarding extends StatefulWidget {
 }
 
 class _OnBoardingState extends State<OnBoarding> {
-  List<Map<String?, String?>> splashData = [
-    {
-      "text": "Create Your\n Portfolio",
-      "another text": "No need to worry about \nMaking your website",
-      "image": "lib/assets/images/person.png"
-    },
-    {
-      "text": "Increase\n Connections",
-      "another text": "Add friends and  \ncommunicate with them.",
-      "image": "lib/assets/images/magnet.png"
-    },
-    {
-      "text": "Create Your\n Portfolio",
-      "another text": "No need to worry about \nMaking your website",
-      "image": "lib/assets/images/person.png"
-    }
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, Constraints) => Container(
-          margin: EdgeInsets.only(
-            left: Constraints.maxWidth * 0.05,
-            right: Constraints.maxWidth * 0.03,
-            top: Constraints.maxHeight * 0.05,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // top section
-              Expanded(
-                flex: 6,
-                child: PageView.builder(
-                  itemCount: splashData.length,
-                  itemBuilder: (context, index) => SplashScreen(
-                    image: splashData[index]["image"]!,
-                    text: splashData[index]["text"]!,
-                    anotherText: splashData[index]["another text"]!,
-                  ),
-                ),
-              ),
-              // button section
-              Expanded(
-                flex: 1,
-                child: MyButton(
-                  myText: 'Next',
-                  ontap: () {
-                    // Implement the logic for the button press here
-                  },
-                  left: Constraints.maxWidth * 0.03,
-                  top: Constraints.maxHeight * 0.018,
-                  bottom: Constraints.maxHeight * 0.03,
-                  height: Constraints.maxHeight * 0.077,
-                  width: Constraints.maxWidth * 0.86,
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+        body: SafeArea(
+            child: LayoutBuilder(
+                builder: (context, Constraints) => Container(
+                    margin: EdgeInsets.only(
+                        left: Constraints.maxWidth * 0.05,
+                        right: Constraints.maxWidth * 0.03,
+                        top: Constraints.maxHeight * 0.05),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: PageView.builder(
+                            itemBuilder: (context, index) => OnboardingContent(
+                              description: 'huhu description here',
+                              image: 'lib/assets/images/person.png',
+                              title: 'Hahahahaha',
+                            ),
+                          ),
+                        ),
+                        MyButton(
+                            ontap: () {},
+                            bottom: Constraints.maxHeight * 0.03,
+                            height: Constraints.maxHeight * 0.077,
+                            left: Constraints.maxWidth * 0.01,
+                            myText: 'Next',
+                            width: Constraints.maxWidth * 0.86,
+                            top: Constraints.minHeight * 0.018)
+                      ],
+                    )))));
   }
 }
 
-class SplashScreen extends StatelessWidget {
-  final String text, image, anotherText;
-  SplashScreen({
+class OnboardingContent extends StatelessWidget {
+  final String title, image, description;
+  OnboardingContent({
     super.key,
-    required this.text,
+    required this.title,
     required this.image,
-    required this.anotherText,
+    required this.description,
   });
 
   @override
@@ -91,23 +60,21 @@ class SplashScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MyText(
-              text: text,
+              text: title,
               color: Colors.white,
-              fontSize: 50,
+              fontSize: 62,
               fontWeight: FontWeight.w800),
           Spacer(),
-          Center(
-            child: Image.asset(
-              image,
-              height: Constraints.maxHeight * 0.4,
-            ),
+          Image.asset(
+            image,
+            height: Constraints.maxHeight * 0.4,
           ),
           Spacer(),
           MyText(
-              text: anotherText,
-              color: Color(0xff7e7e7e),
-              fontSize: 24,
-              fontWeight: FontWeight.w400),
+              text: description,
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.normal),
           Spacer()
         ],
       ),
