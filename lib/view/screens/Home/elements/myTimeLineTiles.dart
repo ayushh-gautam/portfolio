@@ -2,13 +2,17 @@
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
+import 'package:portfolio/view/screens/Home/elements/Timeline%20Tiles%20Elements/cvTimelineChild.dart';
+
 class MyTimeLineTiles extends StatelessWidget {
   bool isfirst;
   bool islast;
+  Widget endChild;
   MyTimeLineTiles({
     Key? key,
     required this.isfirst,
     required this.islast,
+    required this.endChild,
   }) : super(key: key);
 
   @override
@@ -16,14 +20,15 @@ class MyTimeLineTiles extends StatelessWidget {
     return SizedBox(
       height: 110,
       child: TimelineTile(
-          isFirst: isfirst,
-          isLast: islast,
-          beforeLineStyle: LineStyle(color: Color(0xffff1493)),
-          indicatorStyle: IndicatorStyle(
-              width: 25,
-              color: Color(0xff03B44A),
-              iconStyle:
-                  IconStyle(iconData: Icons.circle, color: Colors.white))),
+        isFirst: isfirst,
+        isLast: islast,
+        beforeLineStyle: LineStyle(color: Color(0xffff1493)),
+        indicatorStyle: IndicatorStyle(
+            width: 25,
+            color: Color(0xff03B44A),
+            iconStyle: IconStyle(iconData: Icons.circle, color: Colors.white)),
+        endChild: endChild,
+      ),
     );
   }
 }
