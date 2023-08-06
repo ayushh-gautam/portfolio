@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:portfolio/elements/myText.dart';
+import 'package:portfolio/view/screens/Home/elements/myTimeLineTiles.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -38,6 +41,32 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: MyText(
+                  text: "Flutter Developer",
+                  color: Color(0xffB1B1B1),
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: MyText(
+                  text: "Mr.Timsina",
+                  color: Colors.white,
+                  fontSize: 38,
+                  fontWeight: FontWeight.w600),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: Constraints.maxWidth * 0.15),
+              child: Column(
+                children: [
+                  MyTimeLineTiles(isfirst: true, islast: false),
+                  MyTimeLineTiles(isfirst: false, islast: false),
+                  MyTimeLineTiles(isfirst: false, islast: true),
+                ],
+              ),
+            )
           ],
         )),
       );
