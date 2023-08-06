@@ -11,6 +11,6 @@ void main(List<String> args) {
           backgroundColor: Colors.black,
         )),
     debugShowCheckedModeBanner: false,
-    home: MyNavigationBar(),
+    home: OnBoarding(),
   ));
 }
