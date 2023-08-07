@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:portfolio/elements/myText.dart';
-import 'package:portfolio/view/screens/Home/elements/Timeline%20Tiles%20Elements/projectTimelineChild.dart';
-import 'package:portfolio/view/screens/Home/elements/Timeline%20Tiles%20Elements/socialsTimelineChild.dart';
-import 'package:portfolio/view/screens/Home/elements/myTimeLineTiles.dart';
+import 'package:portfolio/view/screens/Home/elements/Timeline%20Tiles%20Elements/myTimeLineTiles.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
-import '../elements/Timeline Tiles Elements/cvTimelineChild.dart';
+import '../elements/Timeline Tiles Elements/TimelineChild.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -68,15 +66,24 @@ class _HomePageState extends State<HomePage> {
                   MyTimeLineTiles(
                       isfirst: true,
                       islast: false,
-                      endChild: CVTimelineChild()),
+                      endChild: TimelineChild(
+                        text: 'CV / Resume',
+                        ontap: () {},
+                      )),
                   MyTimeLineTiles(
                       isfirst: false,
                       islast: false,
-                      endChild: ProjectTimelineChild()),
+                      endChild: TimelineChild(
+                        ontap: () {},
+                        text: 'Project',
+                      )),
                   MyTimeLineTiles(
                       isfirst: false,
                       islast: true,
-                      endChild: SocialTimelineChild()),
+                      endChild: TimelineChild(
+                        ontap: () {},
+                        text: 'Socials',
+                      )),
                 ],
               ),
             )
