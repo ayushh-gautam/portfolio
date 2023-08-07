@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/textField.dart';
-import 'package:portfolio/view/services/authPage.dart';
+
 import 'package:portfolio/view/services/authService.dart';
 
 class SignUp extends StatefulWidget {

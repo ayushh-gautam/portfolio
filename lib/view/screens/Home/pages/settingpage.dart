@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
-import 'package:portfolio/view/services/authService.dart';
+
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
