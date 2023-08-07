@@ -3,7 +3,7 @@ import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/textField.dart';
 import 'package:portfolio/view/screens/loginScreen/screens/signupScreen.dart';
-import 'package:portfolio/view/services/authPage.dart';
+import 'package:portfolio/view/services/authService.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
