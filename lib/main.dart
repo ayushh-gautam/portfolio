@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/firebase_options.dart';
+import 'package:portfolio/view/screens/onboardingScreen/onBoarding.dart';
 
 import 'package:portfolio/view/services/authPage.dart';
 
@@ -15,6 +16,6 @@ Future main() async {
           backgroundColor: Colors.black,
         )),
     debugShowCheckedModeBanner: false,
-    home: AuthPage(),
+    home: OnBoarding(),
   ));
 }
