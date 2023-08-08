@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:portfolio/elements/myText.dart';
@@ -14,6 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, Constraints) {
@@ -35,8 +37,8 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(15.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(100),
-                    child: Image.asset(
-                      'lib/assets/images/Mask group (1).png',
+                    child: Image.network(
+                      user!.photoURL!,
                       height: Constraints.maxHeight * 0.17,
                     ),
                   ),
@@ -54,7 +56,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: MyText(
-                  text: "Mr.Timsina",
+                  text: user!.displayName!.trim(),
                   color: Colors.white,
                   fontSize: 38,
                   fontWeight: FontWeight.w600),
