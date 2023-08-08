@@ -30,17 +30,17 @@ class _HomePageState extends State<HomePage> {
             ),
             Center(
               child: Container(
-                height: Constraints.maxHeight * 0.2,
+                height: Constraints.maxHeight * 0.18,
                 decoration: BoxDecoration(
                     color: Color(0xff434343),
                     borderRadius: BorderRadius.circular(100)),
                 child: Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(200),
                     child: Image.network(
                       user.photoURL!,
-                      height: Constraints.maxHeight * 0.17,
+                      scale: 0.5,
                     ),
                   ),
                 ),
