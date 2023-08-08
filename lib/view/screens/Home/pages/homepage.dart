@@ -1,9 +1,9 @@
+// ignore_for_file: prefer_const_constructors, unnecessary_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/elements/Timeline%20Tiles%20Elements/myTimeLineTiles.dart';
-import 'package:timeline_tile/timeline_tile.dart';
-
 import '../elements/Timeline Tiles Elements/TimelineChild.dart';
 
 class HomePage extends StatefulWidget {
@@ -63,6 +63,7 @@ class _HomePageState extends State<HomePage> {
               margin: EdgeInsets.only(left: Constraints.maxWidth * 0.15),
               child: Column(
                 children: [
+                  // on the OnTap function of the Timeline Tiles just add navigation.push and navigate
                   MyTimeLineTiles(
                       isfirst: true,
                       islast: false,
