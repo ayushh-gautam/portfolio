@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/database/getUsername.dart';
 
 class MessagePage extends StatefulWidget {
@@ -10,34 +11,32 @@ class MessagePage extends StatefulWidget {
 }
 
 class _MessagePageState extends State<MessagePage> {
-  List<String> documentEmail = [];
-  Future getDocEmail() async {
+  List<String> documentid = [];
+  Future getDocid() async {
     await FirebaseFirestore.instance
         .collection('users')
         .get()
-        .then((snapchot) => snapchot.docs.forEach((element) {
+        .then((snapshot) => snapshot.docs.forEach((element) {
               print(element.reference);
-              documentEmail.add(element.reference.id);
+              documentid.add(element.reference.id);
             }));
-  }
-
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    getDocEmail();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-          future: getDocEmail(),
+          future: getDocid(),
           builder: (context, snapshot) {
-            return Center(
-              child: Text(
-                GetUsername(documentEmail: documentEmail[0]) as String,
-              ),
-            );
+            return ListView.builder(
+                itemCount: documentid.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                      title: Center(
+                          child: GetUsername(
+                    documentids: documentid[index],
+                  )));
+                });
           }),
     );
   }

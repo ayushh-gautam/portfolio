@@ -40,9 +40,8 @@ class _SignUpState extends State<SignUp> {
             'username': emailController.text.split('@')[0],
             'password': passController.text.trim(),
             'gender': '',
-            'photoUrl': usercredential.user!.photoURL,
+            'photoUrl': '',
             'number': '',
-
           },
         );
 
