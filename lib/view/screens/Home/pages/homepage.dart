@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_import
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -15,8 +16,27 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+@override
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
+
+  List<String> documentEmail = [];
+  Future getDocEmail() async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .get()
+        .then((snapchot) => snapchot.docs.forEach((element) {
+              print(element.reference);
+              documentEmail.add(element.reference.id);
+            }));
+  }
+
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getDocEmail();
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, Constraints) {
