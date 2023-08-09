@@ -21,18 +21,19 @@ class _SignUpState extends State<SignUp> {
   final confirmPassController = TextEditingController();
 
   void SignUp() async {
-    try {
-      if (passController.text == confirmPassController.text) {
+    if (passController.text == confirmPassController.text) {
+      try {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: emailController.text.trim(),
             password: passController.text.trim());
-      } else {
-        showwError('Password doesn\'t match');
+
+        // ignore: use_build_context_synchronously
+        Navigator.pop(context);
+      } on FirebaseAuthException catch (e) {
+        showwError(e.code);
       }
-      // ignore: use_build_context_synchronously
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      showwError(e.code);
+    } else {
+      showwError('Password doesn\'t match');
     }
   }
 
