@@ -11,7 +11,7 @@ class SignUp extends StatefulWidget {
 
   @override
   State<SignUp> createState() => _SignUpState();
-} 
+}
 
 class _SignUpState extends State<SignUp> {
   final emailController = TextEditingController();
@@ -19,12 +19,12 @@ class _SignUpState extends State<SignUp> {
   final confirmPassController = TextEditingController();
 
   void SignUp() async {
-    Navigator.pop(context);
     if (passController.text == confirmPassController.text) {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passController.text.trim());
     }
+    Navigator.pop(context);
   }
 
   @override
