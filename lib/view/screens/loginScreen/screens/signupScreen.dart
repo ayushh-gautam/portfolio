@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
@@ -16,6 +17,15 @@ class _SignUpState extends State<SignUp> {
   final emailController = TextEditingController();
   final passController = TextEditingController();
   final confirmPassController = TextEditingController();
+
+  void SignUp() async {
+    if (passController.text == confirmPassController.text) {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passController.text.trim());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +73,7 @@ class _SignUpState extends State<SignUp> {
                       left: Constraints.maxWidth * 0.03,
                       height: Constraints.maxHeight * 0.077,
                       width: Constraints.maxWidth * 0.86,
-                      ontap: null,
+                      ontap: SignUp,
                     ),
                     Center(
                       child: MyText(

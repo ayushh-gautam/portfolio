@@ -43,7 +43,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                     _pageIndex = index;
                   });
                 },
-                items: [
+                items: [ 
                   BottomNavigationBarItem(
                       icon: Icon(
                         Icons.home,
