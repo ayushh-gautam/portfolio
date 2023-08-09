@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,9 +26,25 @@ class _SignUpState extends State<SignUp> {
   void SignUp() async {
     if (passController.text == confirmPassController.text) {
       try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-            email: emailController.text.trim(),
-            password: passController.text.trim());
+        UserCredential usercredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailController.text.trim(),
+                password: passController.text.trim());
+
+        FirebaseFirestore.instance
+            .collection('users')
+            .doc(usercredential.user!.email)
+            .set(
+          {
+            'email': emailController.text.trim(),
+            'username': emailController.text.split('@')[0],
+            'password': passController.text.trim(),
+            'gender': '',
+            'photoUrl': usercredential.user!.photoURL,
+            'number': '',
+
+          },
+        );
 
         // ignore: use_build_context_synchronously
         Navigator.pop(context);
