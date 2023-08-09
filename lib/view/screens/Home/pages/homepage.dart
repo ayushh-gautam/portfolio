@@ -38,10 +38,15 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(10.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(200),
-                    child: Image.network(
-                      user.photoURL!,
-                      scale: 0.5,
-                    ),
+                    child: (user.photoURL == null)
+                        ? Image.asset(
+                            'lib/assets/images/person.png',
+                            scale: 0.5,
+                          )
+                        : Image.network(
+                            user.photoURL!,
+                            scale: 0.5,
+                          ),
                   ),
                 ),
               ),
@@ -57,7 +62,9 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: MyText(
-                  text: user!.displayName!.trim(),
+                  text: (user.displayName == null)
+                      ? user.email!.split('@')[0]
+                      : user!.displayName!.trim(),
                   color: Colors.white,
                   fontSize: 38,
                   fontWeight: FontWeight.w600),
