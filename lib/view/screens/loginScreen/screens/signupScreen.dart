@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
@@ -19,12 +21,34 @@ class _SignUpState extends State<SignUp> {
   final confirmPassController = TextEditingController();
 
   void SignUp() async {
-    if (passController.text == confirmPassController.text) {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: passController.text.trim());
+    try {
+      if (passController.text == confirmPassController.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passController.text.trim());
+      } else {
+        showwError('Password doesn\'t match');
+      }
+      // ignore: use_build_context_synchronously
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      showwError(e.code);
     }
-    Navigator.pop(context);
+  }
+
+  void showwError(String message) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: Center(
+              child: Text(
+                message,
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+            ),
+          );
+        });
   }
 
   @override
