@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
@@ -22,8 +23,23 @@ class _LoginScreenState extends State<LoginScreen> {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: usernameCOntroller.text, password: passController.text);
     } on FirebaseAuthException catch (e) {
-      print(e);
+      showError(e.code);
     }
+  }
+  void showError(String errorMessage){
+    showDialog(
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: Center(
+              child: Text(
+                errorMessage,
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+            ),
+          );
+        });
+
   }
 
   @override
