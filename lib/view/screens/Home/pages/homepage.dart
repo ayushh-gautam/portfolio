@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-              height: Constraints.maxHeight * 0.15,
+              height: Constraints.maxHeight * 0.1,
             ),
             Center(
               child: Container(
