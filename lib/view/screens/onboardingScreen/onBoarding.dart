@@ -60,7 +60,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 MyButton(
                     ontap: () {
                       currentpage == 2
-                          ? Navigator.pushReplacement(
+                          ? Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => LoginScreen()))
