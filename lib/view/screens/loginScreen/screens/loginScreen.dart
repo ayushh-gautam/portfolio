@@ -26,7 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
       showError(e.code);
     }
   }
-  void showError(String errorMessage){
+
+  void showError(String errorMessage) {
     showDialog(
         context: context,
         builder: (context) {
@@ -39,7 +40,6 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           );
         });
-
   }
 
   @override
@@ -89,7 +89,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       )),
                   MyButton(
                     myText: 'Login',
-                    ontap: signIn,
+                    ontap: () {
+                      signIn();
+                    },
                     left: Constraints.maxWidth * 0.03,
                     top: Constraints.maxHeight * 0.018,
                     bottom: Constraints.maxHeight * 0.03,
