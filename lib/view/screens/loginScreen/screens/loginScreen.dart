@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: usernameCOntroller.text, password: passController.text);
     } on FirebaseAuthException catch (e) {
-      showError(e.code;
+      print(e);
     }
   }
 
