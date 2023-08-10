@@ -24,20 +24,26 @@ class _MessagePageState extends State<MessagePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder(
-          future: getDocid(),
-          builder: (context, snapshot) {
-            return ListView.builder(
-                itemCount: documentid.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                      title: Center(
-                          child: GetUsername(
-                    documentids: documentid[index],
-                  )));
-                });
-          }),
-    );
+    return SafeArea(child: Scaffold(
+      body: LayoutBuilder(builder: (context, Constraints) {
+        return Container(
+          margin: EdgeInsets.only(bottom: Constraints.maxHeight * 0.11),
+          child: FutureBuilder(
+              future: getDocid(),
+              builder: (context, snapshot) {
+                return ListView.builder(
+                    itemCount: documentid.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                          title: Center(
+                        child: GetUsername(
+                          documentids: documentid[index],
+                        ),
+                      ));
+                    });
+              }),
+        );
+      }),
+    ));
   }
 }
