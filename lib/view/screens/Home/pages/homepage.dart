@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     await FirebaseFirestore.instance
         .collection('users')
         .get()
-        .then((snapchot) => snapchot.docs.forEach((element) {
+        .then((snapshot) => snapshot.docs.forEach((element) {
               print(element.reference);
               documentEmail.add(element.reference.id);
             }));
