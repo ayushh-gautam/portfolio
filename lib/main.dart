@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/firebase_options.dart';
-import 'package:portfolio/view/services/authPage.dart';
+import 'package:portfolio/view/screens/onboardingScreen/onBoarding.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +14,6 @@ Future main() async {
           backgroundColor: Colors.black,
         )),
     debugShowCheckedModeBanner: false,
-    home: AuthPage(), //onboarding screen only open when the user is logout
+    home: OnBoarding(), //onboarding screen only open when the user is logout
   ));
 }

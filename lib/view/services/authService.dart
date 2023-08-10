@@ -6,20 +6,23 @@ class AuthService {
   signInWithGoogle() async {
     GoogleSignInAccount? guser = await GoogleSignIn().signIn();
 
-    final GoogleSignInAuthentication gauth = await guser!.authentication;
-    final credential = GoogleAuthProvider.credential(
-        accessToken: gauth.accessToken, idToken: gauth.idToken);
+    try {
+      final GoogleSignInAuthentication gauth = await guser!.authentication;
+      final credential = GoogleAuthProvider.credential(
+          accessToken: gauth.accessToken, idToken: gauth.idToken);
 
-    FirebaseFirestore.instance.collection('users').doc(guser.email).set(
-      {
-        'email': guser.email,
-        'username': guser.email.split('@')[0],
-        'gender': '',
-        'photoUrl': guser.photoUrl,
-        'number': '',
-      },
-    );
-
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+      FirebaseFirestore.instance.collection('users').doc(guser.email).set(
+        {
+          'email': guser.email,
+          'username': guser.email.split('@')[0],
+          'gender': '',
+          'photoUrl': guser.photoUrl,
+          'number': '',
+        },
+      );
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+    }
   }
 }

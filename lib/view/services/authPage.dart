@@ -17,7 +17,7 @@ class AuthPage extends StatelessWidget {
             if (snapshot.hasData) {
               return MyNavigationBar();
             } else {
-              return OnBoarding();
+              return LoginScreen();
             }
           }),
     );

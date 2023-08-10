@@ -59,14 +59,16 @@ class _OnBoardingState extends State<OnBoarding> {
                 ),
                 MyButton(
                     ontap: () {
-                      currentpage == 2
-                          ? Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen()))
-                          : _pageController.nextPage(
-                              duration: const Duration(milliseconds: 200),
-                              curve: Curves.ease);
+                      if (currentpage == 2) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AuthPage()));
+                      } else {
+                        _pageController.nextPage(
+                            duration: const Duration(milliseconds: 200),
+                            curve: Curves.ease);
+                      }
                     },
                     bottom: Constraints.maxHeight * 0.03,
                     height: Constraints.maxHeight * 0.077,
