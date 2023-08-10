@@ -28,7 +28,10 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
       return Stack(children: [
         _pages.elementAt(_pageIndex),
         Padding(
-          padding: EdgeInsets.all(Constraints.maxHeight * 0.02),
+          padding: EdgeInsets.only(
+              top: Constraints.maxHeight * 0.02,
+              right: Constraints.maxWidth * 0.05,
+              left: Constraints.maxWidth * 0.05),
           child: Align(
               alignment: Alignment(0, 1),
               child: ClipRRect(
