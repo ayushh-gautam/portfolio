@@ -16,6 +16,6 @@ Future main() async {
           backgroundColor: Colors.black,
         )),
     debugShowCheckedModeBanner: false,
-    home: OnBoarding(),
+    home: AuthPage(), //onboarding screen only open when the user is logout
   ));
 }

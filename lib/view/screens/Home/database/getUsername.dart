@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
+import 'package:portfolio/view/screens/Home/pages/chat.dart';
 
 class GetUsername extends StatelessWidget {
   String documentids;
@@ -28,7 +29,10 @@ class GetUsername extends StatelessWidget {
                         padding: EdgeInsets.all(Constraints.maxWidth * 0.02),
                         child: GestureDetector(
                           onTap: () {
-                            print('hellp');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ChatPage()));
                           },
                           child: Container(
                               decoration: BoxDecoration(
