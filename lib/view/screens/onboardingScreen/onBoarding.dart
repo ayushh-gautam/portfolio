@@ -60,10 +60,10 @@ class _OnBoardingState extends State<OnBoarding> {
                 MyButton(
                     ontap: () {
                       currentpage == 2
-                          ? Navigator.push(
+                          ? Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AuthPage()))
+                                  builder: (context) => LoginScreen()))
                           : _pageController.nextPage(
                               duration: const Duration(milliseconds: 200),
                               curve: Curves.ease);
