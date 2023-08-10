@@ -16,6 +16,6 @@ Future main() async {
           backgroundColor: Colors.black,
         )),
     debugShowCheckedModeBanner: false,
-    home: OnBoarding(),
+    home: AuthPage(),
   ));
 }
