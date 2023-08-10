@@ -17,9 +17,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final usernameCOntroller = TextEditingController();
   final passController = TextEditingController();
 
-  void signIn() {
-    FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: usernameCOntroller.text, password: passController.text);
+  void signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: usernameCOntroller.text, password: passController.text);
+    } on FirebaseAuthException catch (e) {
+      showError(e.code;
+    }
   }
 
   @override
