@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 
 class GetUsername extends StatelessWidget {
-  final String documentids;
+  String documentids;
   GetUsername({super.key, required this.documentids});
 
   @override
@@ -48,7 +48,7 @@ class GetUsername extends StatelessWidget {
                                           : Image.network('${data['photoUrl']}',
                                               scale: 1.0),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 20,
                                     ),
                                     MyText(
