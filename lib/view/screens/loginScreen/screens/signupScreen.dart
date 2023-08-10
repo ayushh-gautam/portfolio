@@ -44,7 +44,6 @@ class _SignUpState extends State<SignUp> {
 
         // ignore: use_build_context_synchronously
         Navigator.pop(context);
-        Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
         showwError(e.code);
       }
