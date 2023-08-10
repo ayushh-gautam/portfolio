@@ -19,10 +19,20 @@ class _LoginScreenState extends State<LoginScreen> {
   final passController = TextEditingController();
 
   void signIn() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        });
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: usernameCOntroller.text, password: passController.text);
+
+      Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
       showError(e.code);
     }
   }
@@ -89,9 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       )),
                   MyButton(
                     myText: 'Login',
-                    ontap: () {
-                      signIn();
-                    },
+                    ontap: signIn,
                     left: Constraints.maxWidth * 0.03,
                     top: Constraints.maxHeight * 0.018,
                     bottom: Constraints.maxHeight * 0.03,
