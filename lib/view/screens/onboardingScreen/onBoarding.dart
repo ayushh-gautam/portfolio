@@ -77,7 +77,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     bottom: Constraints.maxHeight * 0.03,
                     height: Constraints.maxHeight * 0.077,
                     left: Constraints.maxWidth * 0.01,
-                    myText: 'Next',
+                    myText: currentpage == 2 ? 'Get Started' : 'Next',
                     width: Constraints.maxWidth * 0.86,
                     top: Constraints.minHeight * 0.018)
               ],
