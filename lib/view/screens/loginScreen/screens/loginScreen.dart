@@ -17,6 +17,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final usernameCOntroller = TextEditingController();
   final passController = TextEditingController();
+  bool _obsecureText = true;
 
   void signIn() async {
     showDialog(
@@ -79,6 +80,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     top: Constraints.maxHeight * 0.135,
                   ),
                   MyTextField(
+                    suffixIcon: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _obsecureText = !_obsecureText;
+                          });
+                        },
+                        child: _obsecureText
+                            ? Icon(Icons.visibility)
+                            : Icon(Icons.visibility_off)),
                     obscureText: true,
                     text: 'Password',
                     controller: passController,
