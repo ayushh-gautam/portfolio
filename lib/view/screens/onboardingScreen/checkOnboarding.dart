@@ -14,10 +14,10 @@ class CheckOnBoarding extends StatefulWidget {
     SharedPreferences pref = await SharedPreferences.getInstance();
     bool? value = pref.getBool('onboarding');
     if (value != null) {
-      Navigator.push(
+      Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => AuthPage()));
     } else {
-      Navigator.push(
+      Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => OnBoarding()));
     }
     ;
