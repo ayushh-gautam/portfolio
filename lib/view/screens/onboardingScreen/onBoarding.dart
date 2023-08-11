@@ -1,10 +1,13 @@
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
-import 'package:portfolio/view/screens/loginScreen/screens/loginScreen.dart';
 import 'package:portfolio/view/screens/onboardingScreen/onBoardingContent.dart';
 import 'package:portfolio/view/services/authPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'checkOnboarding.dart';
 import 'onBoardingData.dart';
 
 class OnBoarding extends StatefulWidget {
@@ -64,6 +67,7 @@ class _OnBoardingState extends State<OnBoarding> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => AuthPage()));
+                        CheckOnBoarding().savedata(true);
                       } else {
                         _pageController.nextPage(
                             duration: const Duration(milliseconds: 200),

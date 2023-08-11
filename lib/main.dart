@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/firebase_options.dart';
+import 'package:portfolio/view/screens/onboardingScreen/checkOnboarding.dart';
 import 'package:portfolio/view/screens/onboardingScreen/onBoarding.dart';
 
 Future main() async {
@@ -14,6 +15,7 @@ Future main() async {
           backgroundColor: Colors.black,
         )),
     debugShowCheckedModeBanner: false,
-    home: OnBoarding(), //onboarding screen only open when the user is logout
+    home:
+        CheckOnBoarding(), //onboarding screen only open when the user is logout
   ));
 }
