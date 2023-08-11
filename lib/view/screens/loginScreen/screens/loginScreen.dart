@@ -88,8 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         child: _obsecureText
                             ? Icon(Icons.visibility)
-                            : Icon(Icons.visibility_off)),
-                    obscureText: true,
+                            : Icon(Icons.visibility)),
+                    obscureText: _obsecureText,
                     text: 'Password',
                     controller: passController,
                     left: Constraints.maxWidth * 0.032,
