@@ -18,8 +18,10 @@ Future main() async {
     debugShowCheckedModeBanner: false,
     home: AnimatedSplashScreen(
         animationDuration: Duration(milliseconds: 400),
-        splash: Image.asset('lib/assets/images/ic_launcher.png'),
+        splash:
+            Image.asset('lib/assets/images/ic_launcherCircular.png', scale: 1),
         nextScreen: CheckOnBoarding(),
+        backgroundColor: Colors.black,
         pageTransitionType: PageTransitionType.fade,
         duration: 1500),
     //onboarding screen only open when the user is logout
