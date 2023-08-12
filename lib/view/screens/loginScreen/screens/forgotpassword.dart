@@ -18,38 +18,23 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   TextEditingController EmailController = TextEditingController();
 
   Future _sendlink() async {
-    if (EmailController.text.trim() != null) {
-      try {
-        FirebaseAuth.instance
-            .sendPasswordResetEmail(email: EmailController.text.trim());
-        showDialog(
-            context: context,
-            builder: (context) {
-              return CupertinoAlertDialog(
-                title: Center(
-                  child: Text(
-                    'Reset Link Send! Please Check Your Mail',
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+    try {
+      FirebaseAuth.instance
+          .sendPasswordResetEmail(email: EmailController.text.trim())
+          .then((value) => showDialog(
+              context: context,
+              builder: (context) {
+                return CupertinoAlertDialog(
+                  title: Center(
+                    child: Text(
+                      'Reset Link Send! Please Check Your Mail',
+                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    ),
                   ),
-                ),
-              );
-            });
-      } on FirebaseAuthException catch (e) {
-        showError(e.message.toString());
-      }
-    } else {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return CupertinoAlertDialog(
-              title: Center(
-                child: Text(
-                  'Please Enter Email',
-                  style: TextStyle(color: Colors.white, fontSize: 24),
-                ),
-              ),
-            );
-          });
+                );
+              }));
+    } on FirebaseAuthException catch (e) {
+      showError(e.message.toString());
     }
   }
 
