@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/database/getUsername.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/textField.dart';
@@ -25,9 +26,19 @@ class _ProfilePageState extends State<ProfilePage> {
     //database
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     void updatedata() async {
-      await users
-          .doc(user.email!)
-          .update({'gender': genderController.text.trim()});
+      Container();
+      try {
+        await users
+            .doc(user.email!)
+            .update({'gender': genderController.text.trim()});
+        AlertDialog(
+          title: MyText(
+              text: "updated gender",
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.normal),
+        );
+      } on FirebaseAuthException catch (e) {}
     }
 
     return FutureBuilder<DocumentSnapshot>(
@@ -104,7 +115,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               left: 0,
                               obscureText: false),
                           MyButton(
-                              ontap: updatedata,
+                              ontap: () {
+                                setState(() {});
+                                updatedata();
+                              },
                               bottom: 0,
                               height: 60,
                               left: constraints.maxWidth * 0.01,
