@@ -38,7 +38,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     } on FirebaseAuthException catch (e) {
       if (e.code.toString() == 'invalid-email') {
         setState(() {
-          showError('Invalid email address.');
+          showError('Please provide a valid email address.');
         });
       }
 
