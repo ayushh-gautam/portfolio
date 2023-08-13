@@ -31,13 +31,6 @@ class _ProfilePageState extends State<ProfilePage> {
         await users
             .doc(user.email!)
             .update({'gender': genderController.text.trim()});
-        AlertDialog(
-          title: MyText(
-              text: "updated gender",
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.normal),
-        );
       } on FirebaseAuthException catch (e) {}
     }
 
