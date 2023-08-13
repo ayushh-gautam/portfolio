@@ -18,17 +18,8 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController genderController = TextEditingController();
   TextEditingController numberController = TextEditingController();
-  late String NewValue;
 
   @override
-  Future initState() async {
-    // TODO: implement initState
-
-    super.initState();
-
-    usernameController.text = NewValue;
-  }
-
   @override
   Widget build(BuildContext context) {
     //database
@@ -84,9 +75,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                           MyTextField(
-                              onChanged: (value) {
-                                value = NewValue;
-                              },
+                              onChanged: (value) {},
                               controller: usernameController,
                               text: 'Username',
                               top: constraints.maxHeight * 0.05,
