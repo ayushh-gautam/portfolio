@@ -31,7 +31,9 @@ class _ProfilePageState extends State<ProfilePage> {
         await users
             .doc(user.email!)
             .update({'gender': genderController.text.trim()});
-      } on FirebaseAuthException catch (e) {}
+      } on FirebaseAuthException catch (e) {
+        print(e.code);
+      }
     }
 
     return FutureBuilder<DocumentSnapshot>(
