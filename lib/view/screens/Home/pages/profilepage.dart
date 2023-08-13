@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/view/screens/Home/database/getUsername.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/textField.dart';
 
@@ -17,18 +18,27 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController genderController = TextEditingController();
   TextEditingController numberController = TextEditingController();
+  late String NewValue;
 
   @override
-  void initState() {
+  Future initState() async {
     // TODO: implement initState
+
     super.initState();
-    usernameController.text = 'hello';
+
+    usernameController.text = NewValue;
   }
 
   @override
   Widget build(BuildContext context) {
     //database
     CollectionReference users = FirebaseFirestore.instance.collection('users');
+    void updatedata() async {
+      await users
+          .doc(user.email!)
+          .update({'gender': genderController.text.trim()});
+    }
+
     return FutureBuilder<DocumentSnapshot>(
         future: users.doc(user.email!).get(),
         builder: ((context, snapshot) {
@@ -74,6 +84,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                           MyTextField(
+                              onChanged: (value) {
+                                value = NewValue;
+                              },
                               controller: usernameController,
                               text: 'Username',
                               top: constraints.maxHeight * 0.05,
@@ -102,7 +115,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               left: 0,
                               obscureText: false),
                           MyButton(
-                              ontap: () {},
+                              ontap: updatedata,
                               bottom: 0,
                               height: 60,
                               left: constraints.maxWidth * 0.01,
