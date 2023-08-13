@@ -14,6 +14,7 @@ class _AddPeoplePageState extends State<AddPeoplePage> {
   final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
+    //database
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     return FutureBuilder<DocumentSnapshot>(
         future: users.doc(user.email!).get(),
@@ -21,6 +22,7 @@ class _AddPeoplePageState extends State<AddPeoplePage> {
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
+//////////////////////////////////////////////////////////////////////////////////////
             return Scaffold(
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
