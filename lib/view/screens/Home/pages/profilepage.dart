@@ -17,18 +17,30 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController genderController = TextEditingController();
   TextEditingController numberController = TextEditingController();
+  String? fields;
 
   @override
   @override
   Widget build(BuildContext context) {
     //database
     CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+    ///////////////
     void updatedata() async {
       Container();
       try {
         await users
             .doc(user.email!)
+            .update({'username': usernameController.text.trim()});
+        await users
+            .doc(user.email!)
+            .update({'email': emailController.text.trim()});
+        await users
+            .doc(user.email!)
             .update({'gender': genderController.text.trim()});
+        await users
+            .doc(user.email!)
+            .update({'number': numberController.text.trim()});
       } on FirebaseAuthException catch (e) {
         print(e.code);
       }
@@ -110,6 +122,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           MyButton(
                               ontap: () {
                                 setState(() {});
+
                                 updatedata();
                               },
                               bottom: 0,
