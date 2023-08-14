@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, no_logic_in_create_state
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/elements/myText.dart';
@@ -41,6 +41,9 @@ class _ChatPageState extends State<ChatPage> {
                       recieverphotoUrl!,
                       height: 50,
                     ),
+            ),
+            const SizedBox(
+              width: 10,
             ),
             Text(recieverUsername!)
           ],
