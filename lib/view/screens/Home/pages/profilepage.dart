@@ -22,25 +22,18 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   @override
   Widget build(BuildContext context) {
-    //database
+    // firestore database
     CollectionReference users = FirebaseFirestore.instance.collection('users');
-
-    ///////////////
+//update
     void updatedata() async {
       Container();
       try {
-        await users
-            .doc(user.email!)
-            .update({'username': usernameController.text.trim()});
-        await users
-            .doc(user.email!)
-            .update({'email': emailController.text.trim()});
-        await users
-            .doc(user.email!)
-            .update({'gender': genderController.text.trim()});
-        await users
-            .doc(user.email!)
-            .update({'number': numberController.text.trim()});
+        await users.doc(user.email!).update({
+          'username': usernameController.text.trim(),
+          'email': emailController.text.trim(),
+          'gender': genderController.text.trim(),
+          'number': numberController.text.trim()
+        });
       } on FirebaseAuthException catch (e) {
         print(e.code);
       }
