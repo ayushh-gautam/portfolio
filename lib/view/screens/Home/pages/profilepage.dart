@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/elements/myText.dart';
+
+import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/textField.dart';
 
@@ -18,10 +21,55 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController genderController = TextEditingController();
   TextEditingController numberController = TextEditingController();
   String? fields;
+  final String userfield = 'Username';
 
   @override
   @override
   Widget build(BuildContext context) {
+    Future<void> editprofile(String Field) async {
+      await showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+          backgroundColor: Color(0xff666666),
+          title: MyText(
+              text: userfield,
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.w600),
+          content: TextField(
+            autofocus: true,
+          ),
+          actions: [
+            Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: InkWell(
+                  child: Container(
+                      decoration: BoxDecoration(),
+                      child: MyText(
+                        text: "Cancel",
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                      )),
+                )),
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: MyButton(
+                  ontap: () {},
+                  bottom: 0,
+                  height: 50,
+                  left: 0,
+                  myText: 'Done',
+                  width: 134,
+                  top: 0),
+            )
+          ],
+        ),
+      );
+    }
+
     // firestore database
     CollectionReference users = FirebaseFirestore.instance.collection('users');
 //update
@@ -51,17 +99,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 builder: (context, constraints) {
                   return SingleChildScrollView(
                     child: Container(
-                      margin:
-                          EdgeInsets.only(left: constraints.maxWidth * 0.05),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
                             height: constraints.maxHeight * 0.15,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                                left: constraints.maxWidth * 0.27),
+                          Center(
                             child: Container(
                               height: constraints.maxHeight * 0.18,
                               decoration: BoxDecoration(
@@ -84,47 +128,17 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ),
                           ),
-                          MyTextField(
-                              onChanged: (value) {},
-                              controller: usernameController,
-                              text: 'Username',
-                              top: constraints.maxHeight * 0.05,
-                              right: constraints.maxWidth * 0.05,
-                              left: 0,
-                              obscureText: false),
-                          MyTextField(
-                              controller: emailController,
-                              text: 'Email',
-                              top: constraints.maxHeight * 0.05,
-                              right: constraints.maxWidth * 0.05,
-                              left: 0,
-                              obscureText: false),
-                          MyTextField(
-                              controller: genderController,
-                              text: 'gender',
-                              top: constraints.maxHeight * 0.05,
-                              right: constraints.maxWidth * 0.05,
-                              left: 0,
-                              obscureText: false),
-                          MyTextField(
-                              controller: numberController,
-                              text: 'number',
-                              top: constraints.maxHeight * 0.05,
-                              right: constraints.maxWidth * 0.05,
-                              left: 0,
-                              obscureText: false),
-                          MyButton(
-                              ontap: () {
-                                setState(() {});
-
-                                updatedata();
-                              },
-                              bottom: 0,
-                              height: 60,
-                              left: constraints.maxWidth * 0.01,
-                              myText: 'Edit Profile',
-                              width: constraints.maxWidth * 0.87,
-                              top: constraints.maxHeight * 0.05)
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: constraints.maxHeight * 0.05,
+                                left: constraints.maxWidth * 0.05,
+                                right: constraints.maxWidth * 0.05),
+                            child: ProfileTiles(
+                                onPressed: () => editprofile(userfield),
+                                height: constraints.maxHeight * 0.08,
+                                Field: userfield,
+                                Value: 'Azzaya'),
+                          )
                         ],
                       ),
                     ),
