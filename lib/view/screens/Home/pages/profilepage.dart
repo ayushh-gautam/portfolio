@@ -177,6 +177,36 @@ class _ProfilePageState extends State<ProfilePage> {
                                 Field: proffield,
                                 Value: 'Developer'),
                           ),
+
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: constraints.maxHeight * 0.05,
+                                left: constraints.maxWidth * 0.05,
+                                right: constraints.maxWidth * 0.05),
+                            child: ProfileTiles(
+                                onPressed: () => editprofile(
+                                    genderfield,
+                                    constraints.maxHeight * 0.05,
+                                    constraints.maxWidth * 0.3),
+                                height: constraints.maxHeight * 0.08,
+                                Field: genderfield,
+                                Value: 'male'),
+                          ),
+
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: constraints.maxHeight * 0.05,
+                                left: constraints.maxWidth * 0.05,
+                                right: constraints.maxWidth * 0.05),
+                            child: ProfileTiles(
+                                onPressed: () => editprofile(
+                                    numfield,
+                                    constraints.maxHeight * 0.05,
+                                    constraints.maxWidth * 0.3),
+                                height: constraints.maxHeight * 0.08,
+                                Field: numfield,
+                                Value: '9812231312'),
+                          ),
                         ],
                       ),
                     ),
