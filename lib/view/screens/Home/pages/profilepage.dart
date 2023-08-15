@@ -163,7 +163,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
 //-------------------------------------------------------------------------------------------------------------\\
-//----------------------------------------- user filed starts --------------------------------------------------\\
+//----------------------------------------- Username filed starts --------------------------------------------------\\
                         Padding(
                           padding: EdgeInsets.only(
                               top: constraints.maxHeight * 0.05,
@@ -180,7 +180,6 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
 //-------------------------------------------------------------------------------------------\\
 //----------------------------------------- Profession Field Starts --------------------------------------------------\\
-
                         Padding(
                           padding: EdgeInsets.only(
                               top: constraints.maxHeight * 0.05,
@@ -195,7 +194,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               Field: proffield,
                               Value: 'Developer'),
                         ),
-
+//-------------------------------------------------------------------------------------------\\
+//--------------------------------------------- Gender field starts ----------------------------------------------\\
                         Padding(
                           padding: EdgeInsets.only(
                               top: constraints.maxHeight * 0.05,
@@ -210,7 +210,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               Field: genderfield,
                               Value: data['gender']),
                         ),
-                        /////////////////////////////////////////////////// k garya aafai edit do tyo alert box ko text
+//-------------------------------------------------------------------------------------------\\
+//----------------------------------------- Number field starts --------------------------------------------------\\
                         Padding(
                           padding: EdgeInsets.only(
                               top: constraints.maxHeight * 0.05,
@@ -223,8 +224,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                   constraints.maxWidth * 0.3),
                               height: constraints.maxHeight * 0.08,
                               Field: numfield,
-                              Value: '9812231312'),
+                              Value: data['number']),
                         ),
+//-------------------------------------------------------------------------------------------\\
                       ],
                     ),
                   );
@@ -232,6 +234,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             );
           } else {
+//------------------------------------------- Return what to show before fatching Data ------------------------------------------------\\
             return Center(
                 child: Container(child: const CircularProgressIndicator()));
           }
