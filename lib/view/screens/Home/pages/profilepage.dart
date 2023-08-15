@@ -1,11 +1,12 @@
 // ignore_for_file: non_constant_identifier_names
-
+//import section
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
 
+//-----------main clas ProfilePage
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -14,6 +15,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+//-----------Veriable and Instance Declarations.--------------------------\\
   final user = FirebaseAuth.instance.currentUser!; //for current user
   TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -24,11 +26,11 @@ class _ProfilePageState extends State<ProfilePage> {
   final String proffield = 'Profession';
   final String genderfield = 'Gender';
   final String numfield = 'Number';
-
+//-----------------------------------------------------------------------------\\
   @override
   @override
   Widget build(BuildContext context) {
-    //
+    //------------------Function to edit profile (Update with Alert box)-------------------\\
     Future<void> editprofile(
         String Field, double boxheight, double boxwidth) async {
       await showDialog(
@@ -38,7 +40,8 @@ class _ProfilePageState extends State<ProfilePage> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
           backgroundColor: Color(0xff666666),
           title: MyText(
-              text: Field,
+              text:
+                  Field, //-------------------------This field is for the name of each alert box------------\\
               color: Colors.white,
               fontSize: 24,
               fontWeight: FontWeight.w600),
@@ -46,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
             autofocus: true,
           ),
           actions: [
-//Cancel button starts ---
+//------------------------------Cancel button of alert box starts ----------------------------------\\
             Padding(
                 padding:
                     const EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
@@ -67,7 +70,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       )),
                 )),
-//----Cancel button closed.
+
+//---------------------------Cancel button of alert box closed.-------------------------------\\
+
+            //---------------------------Done button Startss .-------------------------------\\
+
             Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: InkWell(
@@ -90,10 +97,13 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       );
     }
+//-------------------------------------------------------------------------------------------\\
+//-------------------------------------------------------------------------------------------\\
+// -------------------------------Code for Firestore Database----------------------------------------------\\
+//---------------------------------------------------------------------------------------------\\
 
-    // firestore database
     CollectionReference users = FirebaseFirestore.instance.collection('users');
-//update
+//--------------------------------------------------------------------------------Update Function----\\
     void updatedata() async {
       Container();
       try {
@@ -108,6 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
       }
     }
 
+//--------------------------------------------------------------------------------Futue Builder to Fetch data (data) ----\\
     return FutureBuilder<DocumentSnapshot>(
         future: users.doc(user.email!).get(),
         builder: ((context, snapshot) {
