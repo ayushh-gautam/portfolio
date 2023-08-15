@@ -31,6 +31,8 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     //------------------ Function to edit profile (Update with Alert box)-------------------\\
+    String NewValue = '';
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
     Future<void> editprofile(
         String Field, double boxheight, double boxwidth) async {
       await showDialog(
@@ -45,7 +47,10 @@ class _ProfilePageState extends State<ProfilePage> {
               color: Colors.white,
               fontSize: 24,
               fontWeight: FontWeight.w600),
-          content: const TextField(
+          content: TextField(
+            onChanged: (value) {
+              NewValue = value;
+            },
             autofocus: true,
           ),
           actions: [
@@ -78,12 +83,13 @@ class _ProfilePageState extends State<ProfilePage> {
             Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: InkWell(
+                  onTap: () => Navigator.of(context).pop(NewValue),
                   child: Container(
                       height: boxheight,
                       width: boxwidth,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(14),
-                          color: Color(0xff03b44a)),
+                          color: const Color(0xff03b44a)),
                       child: Center(
                         child: MyText(
                           text: "Done",
@@ -96,29 +102,18 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
       );
-    }
-//-------------------------------------------------------------------------------------------\\
-//-------------------------------------------------------------------------------------------\\
-// ------------------------------- Code for Firestore Database ----------------------------------------------\\
-//---------------------------------------------------------------------------------------------\\
-
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-//-------------------------------------------------------------------------------- Update Function----\\
-    void updatedata() async {
-      Container();
-      try {
-        await users.doc(user.email!).update({
-          'username': usernameController.text.trim(),
-          'email': emailController.text.trim(),
-          'gender': genderController.text.trim(),
-          'number': numberController.text.trim()
-        });
-      } on FirebaseAuthException catch (e) {
-        print(e.code);
+// ------------------------------- Code for Firestore Database  update----------------------------------------------\\
+      if (NewValue.trim().length > 0) {
+        //update only if there is value in textfield
+        await users
+            .doc(user.email!)
+            .update({Field.toLowerCase(): NewValue.trim()});
+        setState(() {});
       }
     }
 
-//-------------------------------------------------------------------------------- Futue Builder to Fetch data (data) ----\\
+//-------------------------------------------------------------------------------------------\\
+//--------------------------------------------- Futue Builder to Fetch data (data) -------------------\\
     return FutureBuilder<DocumentSnapshot>(
         future: users.doc(user.email!).get(),
         builder: ((context, snapshot) {
@@ -208,7 +203,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   constraints.maxWidth * 0.3),
                               height: constraints.maxHeight * 0.08,
                               Field: genderfield,
-                              Value: data['gender']),
+                              Value: data['Gender'] ?? ''),
                         ),
 //-------------------------------------------------------------------------------------------\\
 //----------------------------------------- Number field starts --------------------------------------------------\\
@@ -224,7 +219,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   constraints.maxWidth * 0.3),
                               height: constraints.maxHeight * 0.08,
                               Field: numfield,
-                              Value: data['number']),
+                              Value: data['number'] ?? ''),
                         ),
 //-------------------------------------------------------------------------------------------\\
                       ],
