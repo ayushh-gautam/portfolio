@@ -21,7 +21,8 @@ class _ProfilePageState extends State<ProfilePage> {
   String? fields;
   final String userfield = 'Username';
   final String proffield = 'Profession';
-  
+  final String genderfield = 'Gender';
+  final String numfield = 'Number';
 
   @override
   @override
@@ -144,6 +145,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ),
                           ),
+
+                          //////////////////////////////////////////////////
                           Padding(
                             padding: EdgeInsets.only(
                                 top: constraints.maxHeight * 0.05,
@@ -157,7 +160,23 @@ class _ProfilePageState extends State<ProfilePage> {
                                 height: constraints.maxHeight * 0.08,
                                 Field: userfield,
                                 Value: 'Azzaya'),
-                          )
+                          ),
+
+                          ////////////////////////////////////////////////////////
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: constraints.maxHeight * 0.05,
+                                left: constraints.maxWidth * 0.05,
+                                right: constraints.maxWidth * 0.05),
+                            child: ProfileTiles(
+                                onPressed: () => editprofile(
+                                    proffield,
+                                    constraints.maxHeight * 0.05,
+                                    constraints.maxWidth * 0.3),
+                                height: constraints.maxHeight * 0.08,
+                                Field: proffield,
+                                Value: 'Developer'),
+                          ),
                         ],
                       ),
                     ),
