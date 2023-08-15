@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:portfolio/elements/myText.dart';
 
 import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
@@ -26,7 +27,9 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   @override
   Widget build(BuildContext context) {
-    Future<void> editprofile(String Field) async {
+    //
+    Future<void> editprofile(
+        String Field, double boxheight, double boxwidth) async {
       await showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -46,12 +49,18 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: const EdgeInsets.all(10.0),
                 child: InkWell(
                   child: Container(
-                      decoration: BoxDecoration(),
-                      child: MyText(
-                        text: "Cancel",
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal,
+                      height: boxheight,
+                      width: boxwidth,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(14),
+                          color: Color(0xff03b44a)),
+                      child: Center(
+                        child: MyText(
+                          text: "Cancel",
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
                       )),
                 )),
             Padding(
@@ -134,7 +143,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                 left: constraints.maxWidth * 0.05,
                                 right: constraints.maxWidth * 0.05),
                             child: ProfileTiles(
-                                onPressed: () => editprofile(userfield),
+                                onPressed: () => editprofile(
+                                    userfield,
+                                    constraints.maxHeight * 0.05,
+                                    constraints.maxWidth * 0.3),
                                 height: constraints.maxHeight * 0.08,
                                 Field: userfield,
                                 Value: 'Azzaya'),
