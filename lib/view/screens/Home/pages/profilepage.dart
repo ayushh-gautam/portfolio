@@ -203,7 +203,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   constraints.maxWidth * 0.3),
                               height: constraints.maxHeight * 0.08,
                               Field: genderfield,
-                              Value: data['Gender'] ?? ''),
+                              Value: data['gender'] ?? ''),
                         ),
 //-------------------------------------------------------------------------------------------\\
 //----------------------------------------- Number field starts --------------------------------------------------\\
