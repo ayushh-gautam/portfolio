@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -40,14 +42,16 @@ class _ProfilePageState extends State<ProfilePage> {
               color: Colors.white,
               fontSize: 24,
               fontWeight: FontWeight.w600),
-          content: TextField(
+          content: const TextField(
             autofocus: true,
           ),
           actions: [
+//Cancel button starts ---
             Padding(
                 padding:
                     const EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
                 child: InkWell(
+                  onTap: () => Navigator.pop(context),
                   child: Container(
                       height: boxheight,
                       width: boxwidth,
@@ -63,6 +67,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       )),
                 )),
+//----Cancel button closed.
             Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: InkWell(
