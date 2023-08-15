@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
 
-//-----------main clas ProfilePage
+//----------- main clas ProfilePage-------------\\
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -15,7 +15,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-//-----------Veriable and Instance Declarations.--------------------------\\
+//----------- Veriable and Instance Declarations.--------------------------\\
   final user = FirebaseAuth.instance.currentUser!; //for current user
   TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   @override
   Widget build(BuildContext context) {
-    //------------------Function to edit profile (Update with Alert box)-------------------\\
+    //------------------ Function to edit profile (Update with Alert box)-------------------\\
     Future<void> editprofile(
         String Field, double boxheight, double boxwidth) async {
       await showDialog(
@@ -41,7 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
           backgroundColor: Color(0xff666666),
           title: MyText(
               text:
-                  Field, //-------------------------This field is for the name of each alert box------------\\
+                  Field, //------------------------- This field is for the name of each alert box------------\\
               color: Colors.white,
               fontSize: 24,
               fontWeight: FontWeight.w600),
@@ -49,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
             autofocus: true,
           ),
           actions: [
-//------------------------------Cancel button of alert box starts ----------------------------------\\
+//------------------------------ Cancel button of alert box starts ----------------------------------\\
             Padding(
                 padding:
                     const EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
@@ -71,9 +71,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       )),
                 )),
 
-//---------------------------Cancel button of alert box closed.-------------------------------\\
+//--------------------------- Cancel button of alert box closed.-------------------------------\\
 
-            //---------------------------Done button Startss .-------------------------------\\
+            //--------------------------- Done button Startss .-------------------------------\\
 
             Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -99,11 +99,11 @@ class _ProfilePageState extends State<ProfilePage> {
     }
 //-------------------------------------------------------------------------------------------\\
 //-------------------------------------------------------------------------------------------\\
-// -------------------------------Code for Firestore Database----------------------------------------------\\
+// ------------------------------- Code for Firestore Database ----------------------------------------------\\
 //---------------------------------------------------------------------------------------------\\
 
     CollectionReference users = FirebaseFirestore.instance.collection('users');
-//--------------------------------------------------------------------------------Update Function----\\
+//-------------------------------------------------------------------------------- Update Function----\\
     void updatedata() async {
       Container();
       try {
@@ -118,14 +118,14 @@ class _ProfilePageState extends State<ProfilePage> {
       }
     }
 
-//--------------------------------------------------------------------------------Futue Builder to Fetch data (data) ----\\
+//-------------------------------------------------------------------------------- Futue Builder to Fetch data (data) ----\\
     return FutureBuilder<DocumentSnapshot>(
         future: users.doc(user.email!).get(),
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
-//---------------------------------------------------------------------------------Scaffold startss(main body)----\\
+//--------------------------------------------------------------------------------- Scaffold startss(main body)----\\
             return Scaffold(
               body: LayoutBuilder(
                 builder: (context, constraints) {
@@ -133,12 +133,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-//-------------------------------------------------Sized box to manage the open space above the profile image =>
+//------------------------------------------------- Sized box to manage the open space above the profile image =>
                         SizedBox(
                           height: constraints.maxHeight * 0.09,
                         ),
 //-------------------------------------------------------------------------------------------\\
-//---------------------------------------------Profile Image starts ----------------------------------------------\\
+//--------------------------------------------- Profile Image starts ----------------------------------------------\\
                         Center(
                           child: Container(
                             height: constraints.maxHeight * 0.18,
@@ -163,7 +163,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
 //-------------------------------------------------------------------------------------------------------------\\
-//-----------------------------------------user filed starts--------------------------------------------------\\
+//----------------------------------------- user filed starts --------------------------------------------------\\
                         Padding(
                           padding: EdgeInsets.only(
                               top: constraints.maxHeight * 0.05,
@@ -179,6 +179,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               Value: data['username']),
                         ),
 //-------------------------------------------------------------------------------------------\\
+//----------------------------------------- Profession Field Starts --------------------------------------------------\\
+
                         Padding(
                           padding: EdgeInsets.only(
                               top: constraints.maxHeight * 0.05,
