@@ -3,10 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:portfolio/elements/myText.dart';
-
 import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
-import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
-import 'package:portfolio/view/screens/loginScreen/elements/textField.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -23,6 +20,8 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController numberController = TextEditingController();
   String? fields;
   final String userfield = 'Username';
+  final String proffield = 'Profession';
+  
 
   @override
   @override
