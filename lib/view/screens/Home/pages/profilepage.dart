@@ -125,105 +125,105 @@ class _ProfilePageState extends State<ProfilePage> {
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
-
+//---------------------------------------------------------------------------------Scaffold startss(main body)----\\
             return Scaffold(
               body: LayoutBuilder(
                 builder: (context, constraints) {
                   return SingleChildScrollView(
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: constraints.maxHeight * 0.15,
-                          ),
-                          Center(
-                            child: Container(
-                              height: constraints.maxHeight * 0.18,
-                              decoration: BoxDecoration(
-                                  color: Color(0xff434343),
-                                  borderRadius: BorderRadius.circular(100)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(200),
-                                  child: ("$data['photoUrl']" == '')
-                                      ? Image.asset(
-                                          'lib/assets/images/person.png',
-                                          scale: 0.5,
-                                        )
-                                      : Image.network(
-                                          data['photoUrl'],
-                                          scale: 1,
-                                        ),
-                                ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+//-------------------------------------------------Sized box to manage the open space above the profile image =>
+                        SizedBox(
+                          height: constraints.maxHeight * 0.09,
+                        ),
+//-------------------------------------------------------------------------------------------\\
+//---------------------------------------------Profile Image starts ----------------------------------------------\\
+                        Center(
+                          child: Container(
+                            height: constraints.maxHeight * 0.18,
+                            decoration: BoxDecoration(
+                                color: const Color(0xff434343),
+                                borderRadius: BorderRadius.circular(100)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(200),
+                                child: ("$data['photoUrl']" == '')
+                                    ? Image.asset(
+                                        'lib/assets/images/person.png',
+                                        scale: 0.5,
+                                      )
+                                    : Image.network(
+                                        data['photoUrl'],
+                                        scale: 1,
+                                      ),
                               ),
                             ),
                           ),
+                        ),
+//-------------------------------------------------------------------------------------------------------------\\
+//-----------------------------------------user filed starts--------------------------------------------------\\
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: constraints.maxHeight * 0.05,
+                              left: constraints.maxWidth * 0.05,
+                              right: constraints.maxWidth * 0.05),
+                          child: ProfileTiles(
+                              onPressed: () => editprofile(
+                                  userfield,
+                                  constraints.maxHeight * 0.05,
+                                  constraints.maxWidth * 0.3),
+                              height: constraints.maxHeight * 0.08,
+                              Field: userfield,
+                              Value: data['username']),
+                        ),
+//-------------------------------------------------------------------------------------------\\
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: constraints.maxHeight * 0.05,
+                              left: constraints.maxWidth * 0.05,
+                              right: constraints.maxWidth * 0.05),
+                          child: ProfileTiles(
+                              onPressed: () => editprofile(
+                                  proffield,
+                                  constraints.maxHeight * 0.05,
+                                  constraints.maxWidth * 0.3),
+                              height: constraints.maxHeight * 0.08,
+                              Field: proffield,
+                              Value: 'Developer'),
+                        ),
 
-                          //////////////////////////////////////////////////
-                          Padding(
-                            padding: EdgeInsets.only(
-                                top: constraints.maxHeight * 0.05,
-                                left: constraints.maxWidth * 0.05,
-                                right: constraints.maxWidth * 0.05),
-                            child: ProfileTiles(
-                                onPressed: () => editprofile(
-                                    userfield,
-                                    constraints.maxHeight * 0.05,
-                                    constraints.maxWidth * 0.3),
-                                height: constraints.maxHeight * 0.08,
-                                Field: userfield,
-                                Value: 'Azzaya'),
-                          ),
-
-                          ////////////////////////////////////////////////////////
-                          Padding(
-                            padding: EdgeInsets.only(
-                                top: constraints.maxHeight * 0.05,
-                                left: constraints.maxWidth * 0.05,
-                                right: constraints.maxWidth * 0.05),
-                            child: ProfileTiles(
-                                onPressed: () => editprofile(
-                                    proffield,
-                                    constraints.maxHeight * 0.05,
-                                    constraints.maxWidth * 0.3),
-                                height: constraints.maxHeight * 0.08,
-                                Field: proffield,
-                                Value: 'Developer'),
-                          ),
-
-                          Padding(
-                            padding: EdgeInsets.only(
-                                top: constraints.maxHeight * 0.05,
-                                left: constraints.maxWidth * 0.05,
-                                right: constraints.maxWidth * 0.05),
-                            child: ProfileTiles(
-                                onPressed: () => editprofile(
-                                    genderfield,
-                                    constraints.maxHeight * 0.05,
-                                    constraints.maxWidth * 0.3),
-                                height: constraints.maxHeight * 0.08,
-                                Field: genderfield,
-                                Value: 'male'),
-                          ),
-                          /////////////////////////////////////////////////// k garya aafai edit do tyo alert box ko text
-                          Padding(
-                            padding: EdgeInsets.only(
-                                top: constraints.maxHeight * 0.05,
-                                left: constraints.maxWidth * 0.05,
-                                right: constraints.maxWidth * 0.05),
-                            child: ProfileTiles(
-                                onPressed: () => editprofile(
-                                    numfield,
-                                    constraints.maxHeight * 0.05,
-                                    constraints.maxWidth * 0.3),
-                                height: constraints.maxHeight * 0.08,
-                                Field: numfield,
-                                Value: '9812231312'),
-                          ),
-                        ],
-                      ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: constraints.maxHeight * 0.05,
+                              left: constraints.maxWidth * 0.05,
+                              right: constraints.maxWidth * 0.05),
+                          child: ProfileTiles(
+                              onPressed: () => editprofile(
+                                  genderfield,
+                                  constraints.maxHeight * 0.05,
+                                  constraints.maxWidth * 0.3),
+                              height: constraints.maxHeight * 0.08,
+                              Field: genderfield,
+                              Value: data['gender']),
+                        ),
+                        /////////////////////////////////////////////////// k garya aafai edit do tyo alert box ko text
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: constraints.maxHeight * 0.05,
+                              left: constraints.maxWidth * 0.05,
+                              right: constraints.maxWidth * 0.05),
+                          child: ProfileTiles(
+                              onPressed: () => editprofile(
+                                  numfield,
+                                  constraints.maxHeight * 0.05,
+                                  constraints.maxWidth * 0.3),
+                              height: constraints.maxHeight * 0.08,
+                              Field: numfield,
+                              Value: '9812231312'),
+                        ),
+                      ],
                     ),
                   );
                 },
