@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 
+import '../elements/genderTile.dart';
+
 class Gender extends StatefulWidget {
   const Gender({super.key});
 
@@ -9,6 +11,8 @@ class Gender extends StatefulWidget {
 }
 
 class _GenderState extends State<Gender> {
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,96 +39,39 @@ class _GenderState extends State<Gender> {
                         fontSize: 24,
                         fontWeight: FontWeight.w400),
                     SizedBox(
-                      height: Constraints.maxHeight * 0.15,
+                      height: Constraints.maxHeight * 0.10,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ///////////////////////////////////////////////////////
-                        Container(
-                          height: Constraints.maxHeight * 0.2,
-                          decoration: BoxDecoration(
-                              color: Color(0xff323232),
-                              borderRadius: BorderRadius.circular(14)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(24.0),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Image.asset(
-                                'lib/assets/images/male.png',
-                                height: Constraints.maxHeight * 0.1,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Spacer(),
-                        ////////////////////////////////////////////////////
-                        Container(
-                          height: Constraints.maxHeight * 0.2,
-                          decoration: BoxDecoration(
-                              color: Color(0xff323232),
-                              borderRadius: BorderRadius.circular(14)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(24.0),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Image.asset(
-                                'lib/assets/images/female.png',
-                                height: Constraints.maxHeight * 0.1,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: Constraints.maxHeight * 0.02,
-                    ),
-                    Row(
-                      children: [
-                        MyText(
+                        GenderTile(
+                            ontap: () {},
+                            image: 'lib/assets/images/male.png',
                             text: 'Male',
-                            color: Colors.white,
-                            fontSize: 50,
-                            fontWeight: FontWeight.w600),
-                        Spacer(),
-                        MyText(
+                            height: Constraints.maxHeight * 0.24,
+                            width: Constraints.maxWidth * 0.42,
+                            top: Constraints.maxHeight * 0.02,
+                            bottom: Constraints.maxHeight * 0.04),
+                        GenderTile(
+                            ontap: () {},
+                            image: 'lib/assets/images/female.png',
                             text: 'Female',
-                            color: Colors.white,
-                            fontSize: 50,
-                            fontWeight: FontWeight.w600),
+                            height: Constraints.maxHeight * 0.24,
+                            width: Constraints.maxWidth * 0.42,
+                            top: Constraints.maxHeight * 0.02,
+                            bottom: Constraints.maxHeight * 0.04),
                       ],
                     ),
-                    SizedBox(
-                      height: Constraints.maxHeight * 0.03,
-                    ),
                     Center(
-                      child: Container(
-                        height: Constraints.maxHeight * 0.2,
-                        decoration: BoxDecoration(
-                            color: Color(0xff323232),
-                            borderRadius: BorderRadius.circular(14)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(24.0),
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: Image.asset(
-                              'lib/assets/images/others.png',
-                              height: Constraints.maxHeight * 0.1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: Constraints.maxHeight * 0.02,
-                    ),
-                    Center(
-                      child: MyText(
+                      child: GenderTile(
+                          ontap: () {},
+                          image: 'lib/assets/images/others.png',
                           text: 'Others',
-                          color: Colors.white,
-                          fontSize: 50,
-                          fontWeight: FontWeight.w600),
-                    )
+                          height: Constraints.maxHeight * 0.24,
+                          width: Constraints.maxWidth * 0.42,
+                          top: Constraints.maxHeight * 0.02,
+                          bottom: Constraints.maxHeight * 0.04),
+                    ),
                   ],
                 ),
               )),
