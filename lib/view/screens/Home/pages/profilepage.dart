@@ -46,7 +46,8 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           actions: [
             Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding:
+                    const EdgeInsets.only(left: 10.0, top: 10.0, bottom: 10.0),
                 child: InkWell(
                   child: Container(
                       height: boxheight,
@@ -64,16 +65,23 @@ class _ProfilePageState extends State<ProfilePage> {
                       )),
                 )),
             Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: MyButton(
-                  ontap: () {},
-                  bottom: 0,
-                  height: 50,
-                  left: 0,
-                  myText: 'Done',
-                  width: 134,
-                  top: 0),
-            )
+                padding: const EdgeInsets.all(10.0),
+                child: InkWell(
+                  child: Container(
+                      height: boxheight,
+                      width: boxwidth,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(14),
+                          color: Color(0xff03b44a)),
+                      child: Center(
+                        child: MyText(
+                          text: "Done",
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )),
+                )),
           ],
         ),
       );
