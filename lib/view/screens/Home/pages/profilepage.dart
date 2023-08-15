@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
 
@@ -37,7 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
           backgroundColor: Color(0xff666666),
           title: MyText(
-              text: userfield,
+              text: Field,
               color: Colors.white,
               fontSize: 24,
               fontWeight: FontWeight.w600),
@@ -192,7 +191,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 Field: genderfield,
                                 Value: 'male'),
                           ),
-            /////////////////////////////////////////////////// k garya aafai edit do tyo alert box ko text
+                          /////////////////////////////////////////////////// k garya aafai edit do tyo alert box ko text
                           Padding(
                             padding: EdgeInsets.only(
                                 top: constraints.maxHeight * 0.05,
