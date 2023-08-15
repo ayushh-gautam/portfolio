@@ -187,7 +187,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   constraints.maxWidth * 0.3),
                               height: constraints.maxHeight * 0.08,
                               Field: proffield,
-                              Value: 'Developer'),
+                              Value: data['profession'] ?? ''),
                         ),
 //-------------------------------------------------------------------------------------------\\
 //--------------------------------------------- Gender field starts ----------------------------------------------\\
