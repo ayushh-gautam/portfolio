@@ -52,6 +52,8 @@ class _ProfilePageState extends State<ProfilePage> {
             onChanged: (value) {
               NewValue = value;
             },
+            keyboardType:
+                Field == 'Number' ? TextInputType.number : TextInputType.text,
             autofocus: true,
           ),
           actions: [
