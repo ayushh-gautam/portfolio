@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
+import 'package:portfolio/view/screens/Home/pages/genderPage.dart';
 
 //----------- main clas ProfilePage-------------\\
 class ProfilePage extends StatefulWidget {
@@ -197,10 +198,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               left: constraints.maxWidth * 0.05,
                               right: constraints.maxWidth * 0.05),
                           child: ProfileTiles(
-                              onPressed: () => editprofile(
-                                  genderfield,
-                                  constraints.maxHeight * 0.05,
-                                  constraints.maxWidth * 0.3),
+                              onPressed: () => Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return Gender();
+                                  })),
                               height: constraints.maxHeight * 0.08,
                               Field: genderfield,
                               Value: data['gender'] ?? ''),

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 
@@ -11,10 +13,10 @@ class Gender extends StatefulWidget {
 }
 
 class _GenderState extends State<Gender> {
-
-  
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
     return Scaffold(
       body: LayoutBuilder(
           builder: (context, Constraints) => Container(
@@ -45,7 +47,12 @@ class _GenderState extends State<Gender> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         GenderTile(
-                            ontap: () {},
+                            ontap: () async {
+                              await users
+                                  .doc(user.email!)
+                                  .update({'gender': 'Male'});
+                              setState(() {});
+                            },
                             image: 'lib/assets/images/male.png',
                             text: 'Male',
                             height: Constraints.maxHeight * 0.24,
@@ -53,7 +60,12 @@ class _GenderState extends State<Gender> {
                             top: Constraints.maxHeight * 0.02,
                             bottom: Constraints.maxHeight * 0.04),
                         GenderTile(
-                            ontap: () {},
+                            ontap: () async {
+                              await users
+                                  .doc(user.email!)
+                                  .update({'gender': 'Female'});
+                              setState(() {});
+                            },
                             image: 'lib/assets/images/female.png',
                             text: 'Female',
                             height: Constraints.maxHeight * 0.24,
@@ -64,7 +76,12 @@ class _GenderState extends State<Gender> {
                     ),
                     Center(
                       child: GenderTile(
-                          ontap: () {},
+                          ontap: () async {
+                            await users
+                                .doc(user.email!)
+                                .update({'gender': 'Others'});
+                            setState(() {});
+                          },
                           image: 'lib/assets/images/others.png',
                           text: 'Others',
                           height: Constraints.maxHeight * 0.24,
