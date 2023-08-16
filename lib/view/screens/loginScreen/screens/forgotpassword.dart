@@ -41,7 +41,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         });
       }
 
-      if (EmailController.text.trim() == '') {
+      if (EmailController.text.trim() == '') { // if the 
         setState(() {
           showError('Enter your Email.');
         });
