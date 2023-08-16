@@ -35,19 +35,22 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 );
               }));
     } on FirebaseAuthException catch (e) {
-      if (e.code.toString() == 'invalid-email') { //if the email is not valid
+      if (e.code.toString() == 'invalid-email') {
+        //if the email is not valid
         setState(() {
           showError('Please provide a valid email address.');
         });
       }
 
-      if (EmailController.text.trim() == '') { // if the Email is empty 
+      if (EmailController.text.trim() == '') {
+        // if the Email is empty
         setState(() {
           showError('Enter your Email.');
         });
       }
 
       if (e.code.toString() == 'user-not-found') {
+        //if There is no  User in the database
         setState(() {
           showError('User not found.');
         });
