@@ -1,7 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
+import 'package:portfolio/view/screens/Home/pages/profilepage.dart';
 
 import '../elements/genderTile.dart';
 
@@ -51,7 +54,11 @@ class _GenderState extends State<Gender> {
                               await users
                                   .doc(user.email!)
                                   .update({'gender': 'Male'});
-                              setState(() {});
+                              Navigator.pop(context);
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return ProfilePage();
+                              }));
                             },
                             image: 'lib/assets/images/male.png',
                             text: 'Male',
@@ -64,7 +71,11 @@ class _GenderState extends State<Gender> {
                               await users
                                   .doc(user.email!)
                                   .update({'gender': 'Female'});
-                              setState(() {});
+                              Navigator.pop(context);
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return ProfilePage();
+                              }));
                             },
                             image: 'lib/assets/images/female.png',
                             text: 'Female',
@@ -80,7 +91,11 @@ class _GenderState extends State<Gender> {
                             await users
                                 .doc(user.email!)
                                 .update({'gender': 'Others'});
-                            setState(() {});
+                            Navigator.pop(context);
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) {
+                              return ProfilePage();
+                            }));
                           },
                           image: 'lib/assets/images/others.png',
                           text: 'Others',

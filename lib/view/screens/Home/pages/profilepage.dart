@@ -198,10 +198,13 @@ class _ProfilePageState extends State<ProfilePage> {
                               left: constraints.maxWidth * 0.05,
                               right: constraints.maxWidth * 0.05),
                           child: ProfileTiles(
-                              onPressed: () => Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return Gender();
-                                  })),
+                              onPressed: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return Gender();
+                                }));
+                                setState(() {});
+                              },
                               height: constraints.maxHeight * 0.08,
                               Field: genderfield,
                               Value: data['gender'] ?? ''),
