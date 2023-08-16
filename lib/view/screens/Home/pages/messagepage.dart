@@ -12,7 +12,7 @@ class MessagePage extends StatefulWidget {
   State<MessagePage> createState() => _MessagePageState();
 }
 
-//////////////////////////////////////////////////////////////////////// Database
+//--------------------Database------------------------\\
 class _MessagePageState extends State<MessagePage> {
   final user = FirebaseAuth.instance.currentUser!;
   List<String> documentid = [];
@@ -27,6 +27,7 @@ class _MessagePageState extends State<MessagePage> {
             }));
   }
 
+//----------------The above code is to get The document id of every user from database----\\
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
