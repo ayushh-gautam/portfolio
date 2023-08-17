@@ -16,6 +16,11 @@ class MyNavigationBar2 extends StatefulWidget {
 class _MyNavigationBar2State extends State<MyNavigationBar2> {
   @override
   int _pageIndex = 0;
+  Color homecolor = Colors.white;
+  Color addcolor = Colors.white;
+  Color messagecolor = Colors.white;
+  Color settingcolor = Colors.white;
+  late PageController _pageController;
   List<Widget> _pages = [
     const HomePage(),
     const AddPeoplePage(),
@@ -23,15 +28,41 @@ class _MyNavigationBar2State extends State<MyNavigationBar2> {
     const SettingPage()
   ];
   @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: _pageIndex);
+  }
+
+  void changepage(int index) {
+    _pageController.jumpToPage(index);
+    setState(() {
+      if (index == 0) {
+        homecolor = Colors.cyan;
+      }
+      if (index == 1) {
+        addcolor = Colors.cyan;
+      }
+      if (index == 2) {
+        addcolor = Colors.cyan;
+      }
+      if (index == 3) {
+        addcolor = Colors.cyan;
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, Constraints) {
       return Stack(children: [
         PageView(
+          controller: _pageController,
           children: _pages,
         ),
         Padding(
           padding: EdgeInsets.only(
               top: Constraints.maxHeight * 0.02,
+              bottom: Constraints.maxHeight * 0.02,
               right: Constraints.maxWidth * 0.05,
               left: Constraints.maxWidth * 0.05),
           child: Align(
@@ -46,13 +77,41 @@ class _MyNavigationBar2State extends State<MyNavigationBar2> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Icon(
-                    Icons.home,
-                    color: Colors.white,
-                    size: Constraints.maxHeight * 0.06,
+                  GestureDetector(
+                    onTap: () {
+                      changepage(0);
+                    },
+                    child: Icon(
+                      Icons.home,
+                      color: homecolor,
+                      size: Constraints.maxHeight * 0.05,
+                    ),
                   ),
-                  Icon(Icons.search,
-                      color: Colors.white, size: Constraints.maxHeight * 0.06),
+                  GestureDetector(
+                    onTap: () {
+                      changepage(1);
+                    },
+                    child: Icon(Icons.group_add_sharp,
+                        color: addcolor, size: Constraints.maxHeight * 0.05),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      changepage(2);
+                    },
+                    child: Icon(
+                      Icons.send,
+                      color: messagecolor,
+                      size: Constraints.maxHeight * 0.05,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      changepage(3);
+                    },
+                    child: Icon(Icons.settings,
+                        color: settingcolor,
+                        size: Constraints.maxHeight * 0.05),
+                  ),
                 ],
               ),
             ),
