@@ -16,7 +16,7 @@ class MyNavigationBar2 extends StatefulWidget {
 class _MyNavigationBar2State extends State<MyNavigationBar2> {
   @override
   int _pageIndex = 0;
-  Color homecolor = Colors.white;
+  Color homecolor = Color(0xff03B44A);
   Color addcolor = Colors.white;
   Color messagecolor = Colors.white;
   Color settingcolor = Colors.white;
