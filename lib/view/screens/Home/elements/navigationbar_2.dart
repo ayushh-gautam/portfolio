@@ -37,16 +37,29 @@ class _MyNavigationBar2State extends State<MyNavigationBar2> {
     _pageController.jumpToPage(index);
     setState(() {
       if (index == 0) {
-        homecolor = Colors.cyan;
+        homecolor = Color(0xff03B44A);
+        addcolor = Colors.white;
+        messagecolor = Colors.white;
+        settingcolor = Colors.white;
       }
       if (index == 1) {
-        addcolor = Colors.cyan;
+        addcolor = Color(0xff03B44A);
+        homecolor = Colors.white;
+
+        messagecolor = Colors.white;
+        settingcolor = Colors.white;
       }
       if (index == 2) {
-        addcolor = Colors.cyan;
+        messagecolor = Color(0xff03B44A);
+        homecolor = Colors.white;
+        addcolor = Colors.white;
+        settingcolor = Colors.white;
       }
       if (index == 3) {
-        addcolor = Colors.cyan;
+        settingcolor = Color(0xff03B44A);
+        homecolor = Colors.white;
+        addcolor = Colors.white;
+        messagecolor = Colors.white;
       }
     });
   }
