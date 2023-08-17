@@ -205,7 +205,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                     MaterialPageRoute(builder: (context) {
                                   return Gender();
                                 }));
-                                setState(() {});
                               },
                               height: constraints.maxHeight * 0.08,
                               Field: genderfield,
