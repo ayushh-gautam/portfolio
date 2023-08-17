@@ -39,6 +39,8 @@ class _MyNavigationBar2State extends State<MyNavigationBar2> {
             child: Container(
               height: Constraints.maxHeight * 0.08,
               decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(Constraints.maxHeight * 0.032),
                 color: Color(0xff323232),
               ),
               child: Row(
@@ -47,10 +49,10 @@ class _MyNavigationBar2State extends State<MyNavigationBar2> {
                   Icon(
                     Icons.home,
                     color: Colors.white,
-                    size: Constraints.maxHeight * 0.04,
+                    size: Constraints.maxHeight * 0.06,
                   ),
                   Icon(Icons.search,
-                      color: Colors.white, size: Constraints.maxHeight * 0.04),
+                      color: Colors.white, size: Constraints.maxHeight * 0.06),
                 ],
               ),
             ),
