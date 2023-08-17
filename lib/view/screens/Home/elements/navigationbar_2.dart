@@ -71,6 +71,7 @@ class _MyNavigationBar2State extends State<MyNavigationBar2> {
         PageView(
           controller: _pageController,
           children: _pages,
+          physics: NeverScrollableScrollPhysics(),
         ),
         Padding(
           padding: EdgeInsets.only(
