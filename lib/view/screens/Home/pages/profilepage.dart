@@ -44,7 +44,9 @@ class _ProfilePageState extends State<ProfilePage> {
     final croppedimage = await ImageCropper().cropImage(
         sourcePath: imagetemporary.path,
         aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
-
+    if (croppedimage == null) {
+      return;
+    }
     setState(() {
       imageCache.clear();
       this._image = File(croppedimage!.path);
