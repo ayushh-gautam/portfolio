@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
@@ -31,16 +32,22 @@ class _ProfilePageState extends State<ProfilePage> {
   final String genderfield = 'Gender';
   final String numfield = 'Number';
   File? _image;
+  var finalimage;
 //-----------------------------------------------------------------------------\\
 //---------------------------------Function Image picker from device --------------------------------------------\\
   Future getImage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) {
       return;
     }
     final imagetemporary = File(image.path);
+    final croppedimage = await ImageCropper().cropImage(
+        sourcePath: imagetemporary.path,
+        aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
+
     setState(() {
-      this._image = imagetemporary;
+      imageCache.clear();
+      this._image = File(croppedimage!.path);
     });
   }
 
