@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:portfolio/firebase_options.dart';
 import 'package:portfolio/view/screens/loginScreen/Providers/loginProvider.dart';
+import 'package:portfolio/view/screens/loginScreen/Providers/signupProvider.dart';
 import 'package:portfolio/view/screens/onboardingScreen/checkOnboarding.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => LoginProvider())
+          ChangeNotifierProvider(create: (_) => LoginProvider()),
+          ChangeNotifierProvider(create: (_) => SignupProvider()),
         ], //we add multiple provider over here
         child: MaterialApp(
           theme: ThemeData(
