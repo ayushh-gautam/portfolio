@@ -2,11 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
+import 'package:portfolio/view/screens/loginScreen/Providers/loginProvider.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/textField.dart';
 import 'package:portfolio/view/screens/loginScreen/screens/forgotpassword.dart';
 import 'package:portfolio/view/screens/loginScreen/screens/signupScreen.dart';
 import 'package:portfolio/view/services/authService.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,7 +20,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final usernameCOntroller = TextEditingController();
   final passController = TextEditingController();
-  bool _obsecureText = true;
 
   void signIn() async {
     showDialog(
@@ -55,6 +56,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print('Build');
+//<----------------------------- Provider ------------------------------------------->\\
+    final logprovider = Provider.of<LoginProvider>(context, listen: false);
     return Scaffold(
       body: LayoutBuilder(builder: ((context, Constraints) {
         return SingleChildScrollView(
@@ -80,23 +84,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     right: Constraints.maxWidth * 0.032,
                     top: Constraints.maxHeight * 0.135,
                   ),
-                  MyTextField(
-                    suffixIcon: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _obsecureText = !_obsecureText;
-                          });
-                        },
-                        child: _obsecureText
-                            ? Icon(Icons.visibility_off)
-                            : Icon(Icons.visibility)),
-                    obscureText: _obsecureText,
-                    text: 'Password',
-                    controller: passController,
-                    left: Constraints.maxWidth * 0.032,
-                    right: Constraints.maxWidth * 0.032,
-                    top: Constraints.maxHeight * 0.06,
-                  ),
+//-------------------------------------Added consumer to access Provider------------------------------------------\\
+                  Consumer<LoginProvider>(builder: (context, Snapshot, child) {
+                    return MyTextField(
+                      suffixIcon: GestureDetector(
+                          onTap: () {
+                            Snapshot.eyeButtonSwitch();
+                            print(Snapshot.obsecureText);
+                          },
+                          child: Snapshot.obsecureText
+                              ? Icon(Icons.visibility_off)
+                              : Icon(Icons.visibility)),
+                      obscureText: Snapshot.obsecureText,
+                      text: 'Password',
+                      controller: passController,
+                      left: Constraints.maxWidth * 0.032,
+                      right: Constraints.maxWidth * 0.032,
+                      top: Constraints.maxHeight * 0.06,
+                    );
+                  }),
+//-------------------------------------------------------------------------------
                   Padding(
                       padding: EdgeInsets.only(
                           top: Constraints.maxHeight * 0.035,
