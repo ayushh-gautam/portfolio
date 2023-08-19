@@ -18,42 +18,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final usernameCOntroller = TextEditingController();
-  final passController = TextEditingController();
-
-  void signIn() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        });
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: usernameCOntroller.text, password: passController.text);
-      Navigator.pop(context);
-    } on FirebaseAuthException catch (e) {
-      Navigator.pop(context);
-      showError(e.code);
-    }
-  }
-
-  void showError(String errorMessage) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return CupertinoAlertDialog(
-            title: Center(
-              child: Text(
-                errorMessage,
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-          );
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
     print('Build');
@@ -79,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   MyTextField(
                     obscureText: false,
                     text: 'Username',
-                    controller: usernameCOntroller,
+                    controller: logprovider.usernameCOntroller,
                     left: Constraints.maxWidth * 0.032,
                     right: Constraints.maxWidth * 0.032,
                     top: Constraints.maxHeight * 0.135,
@@ -97,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               : Icon(Icons.visibility)),
                       obscureText: Snapshot.obsecureText,
                       text: 'Password',
-                      controller: passController,
+                      controller: logprovider.passController,
                       left: Constraints.maxWidth * 0.032,
                       right: Constraints.maxWidth * 0.032,
                       top: Constraints.maxHeight * 0.06,
@@ -124,7 +88,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       )),
                   MyButton(
                     myText: 'Login',
-                    ontap: signIn,
+                    ontap: () {
+                      logprovider.signIn(context);
+                    },
                     left: Constraints.maxWidth * 0.03,
                     top: Constraints.maxHeight * 0.018,
                     bottom: Constraints.maxHeight * 0.03,
