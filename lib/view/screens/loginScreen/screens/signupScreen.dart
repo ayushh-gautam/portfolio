@@ -52,11 +52,11 @@ class _SignUpState extends State<SignUp> {
                             onTap: () {
                               Snapshot.eyeButtonSwitch();
                             },
-                            child: Icon(Snapshot.obsecureText
+                            child: Icon(Snapshot.obsecureTextPass
                                 ? Icons.visibility_off
                                 : Icons.visibility),
                           ),
-                          obscureText: Snapshot.obsecuretext,
+                          obscureText: Snapshot.obsecureTextPass,
                           controller: Snapshot.passCONtroller,
                           text: 'Password ',
                           top: Constraints.maxHeight * 0.05,
@@ -71,7 +71,7 @@ class _SignUpState extends State<SignUp> {
                       return MyTextField(
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              Snapshot.eyeButtonSwitch();
+                              Snapshot.eyeButtonSwitchConformPass();
                             },
                             child: Icon(Snapshot.obsecureText
                                 ? Icons.visibility_off

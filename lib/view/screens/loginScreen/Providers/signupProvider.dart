@@ -7,12 +7,17 @@ class SignupProvider with ChangeNotifier {
   //---------------- variables with their functions -------------------------//
 //----------------------------------------------------------------------------//
 //------------------ Obsecure text and its function --------------------------//
-  bool _obsecuretext = true;
-  bool get obsecuretext => _obsecuretext;
+  bool _obsecureTextPass = true;
+  bool get obsecureTextPass => _obsecureTextPass;
   bool _obsecureText = true;
   bool get obsecureText => _obsecureText;
 
   void eyeButtonSwitch() {
+    _obsecureTextPass = !_obsecureTextPass;
+    notifyListeners();
+  }
+
+  void eyeButtonSwitchConformPass() {
     _obsecureText = !_obsecureText;
     notifyListeners();
   }
