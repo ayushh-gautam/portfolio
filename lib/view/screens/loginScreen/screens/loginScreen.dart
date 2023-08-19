@@ -132,10 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         InkWell(
                           //----------------------------------------------------->Button SignUp
                           onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return SignUp();
-                            }));
+                            logprovider.toSignupPage(context);
                           },
                           child: MyText(
                               text: ' Signup',

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/forgotpassword.dart';
+import '../screens/signupScreen.dart';
 
 class LoginProvider with ChangeNotifier {
   //---------------- veriables with there Functions -------------------------//
@@ -63,6 +64,13 @@ class LoginProvider with ChangeNotifier {
   void toForgotPassPage(context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return ForgotPasswordPage();
+    }));
+  }
+
+//----------------------Navigate to SignUp page ---------------------------\\
+  void toSignupPage(context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return SignUp();
     }));
   }
 //-------------------------------------------------------------------------------//
