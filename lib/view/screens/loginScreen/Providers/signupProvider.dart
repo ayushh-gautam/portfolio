@@ -54,10 +54,10 @@ class SignupProvider with ChangeNotifier {
         // ignore: use_build_context_synchronously
         Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
-        showwError(e.code);
+        showwError(e.code, context);
       }
     } else {
-      showwError('Password doesn\'t match');
+      showwError('Password doesn\'t match', context);
     }
   }
 
