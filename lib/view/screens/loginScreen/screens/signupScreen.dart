@@ -1,6 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/loginScreen/Providers/signupProvider.dart';
@@ -20,7 +17,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
-    //---------------------provider---------------------------//
+//-------------- Provider signuppProvider to access data from signup Provider----------------//
     final signuppProvider = Provider.of<SignupProvider>(context, listen: false);
     return Scaffold(
       body: LayoutBuilder(builder: ((context, Constraints) {
@@ -47,6 +44,7 @@ class _SignUpState extends State<SignUp> {
                         right: Constraints.maxWidth * 0.032,
                         left: Constraints.maxWidth * 0.032),
 
+//<------------------ Consumer wedget to rebuild  ----------------------------//
                     Consumer<SignupProvider>(
                         builder: (context, Snapshot, child) {
                       return MyTextField(
@@ -65,8 +63,9 @@ class _SignUpState extends State<SignUp> {
                           right: Constraints.maxWidth * 0.032,
                           left: Constraints.maxWidth * 0.032);
                     }),
+//--------------------------------------------------------------------------->//
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+//<------------------ Consumer wedget to rebuild  --------------------------//
                     Consumer<SignupProvider>(
                         builder: (context, Snapshot, child) {
                       return MyTextField(
@@ -85,6 +84,8 @@ class _SignUpState extends State<SignUp> {
                           right: Constraints.maxWidth * 0.032,
                           left: Constraints.maxWidth * 0.032);
                     }),
+//--------------------------------------------------------------------------->//
+
                     MyButton(
                       myText: 'Signup',
                       bottom: Constraints.maxHeight * 0.05,
@@ -93,6 +94,7 @@ class _SignUpState extends State<SignUp> {
                       height: Constraints.maxHeight * 0.077,
                       width: Constraints.maxWidth * 0.86,
                       ontap: () {
+                        //------------------------------------------------------->Button  SignUp with Email and Password
                         signuppProvider.SignUp(context);
                       },
                     ),
@@ -109,6 +111,7 @@ class _SignUpState extends State<SignUp> {
                     Center(
                       child: InkWell(
                         onTap: () {
+                          //----------------------------------------------------->Button Google Signin
                           AuthService().signInWithGoogle();
                         },
                         child: Image.asset(
