@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
@@ -48,13 +47,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     right: Constraints.maxWidth * 0.032,
                     top: Constraints.maxHeight * 0.135,
                   ),
-//-------------------------------------Added consumer to access Provider------------------------------------------\\
+//<-------------------------------------Added Consumer to access Provider------------------------------------------\\
                   Consumer<LoginProvider>(builder: (context, Snapshot, child) {
                     return MyTextField(
                       suffixIcon: GestureDetector(
+                          //------------------------------------------------------> Button obsecure Icon
                           onTap: () {
                             Snapshot.eyeButtonSwitch();
-                            print(Snapshot.obsecureText);
                           },
                           child: Snapshot.obsecureText
                               ? Icon(Icons.visibility_off)
@@ -67,17 +66,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       top: Constraints.maxHeight * 0.06,
                     );
                   }),
-//-------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------->\\
                   Padding(
                       padding: EdgeInsets.only(
                           top: Constraints.maxHeight * 0.035,
                           left: Constraints.maxWidth * 0.5),
                       child: GestureDetector(
+                        //------------------------------------------------------->Button Forgot Pass
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return ForgotPasswordPage();
-                          }));
+                          logprovider.toForgotPassPage(context);
                         },
                         child: MyText(
                           text: 'Forgot Password?',
@@ -88,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       )),
                   MyButton(
                     myText: 'Login',
+                    //----------------------------------------------------------->Button Login
                     ontap: () {
                       logprovider.signIn(context);
                     },
@@ -111,6 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Center(
                     child: InkWell(
                       borderRadius: BorderRadius.circular(100),
+                      //--------------------------------------------------------->Button Google Signin
                       onTap: () async {
                         AuthService().signInWithGoogle();
                       },
@@ -131,6 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontSize: 20,
                             fontWeight: FontWeight.normal),
                         InkWell(
+                          //----------------------------------------------------->Button SignUp
                           onTap: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {

@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/forgotpassword.dart';
+
 class LoginProvider with ChangeNotifier {
   //---------------- veriables with there Functions -------------------------//
 //--------------------------------Function of Obsecure Text--------------------------//
@@ -53,6 +55,15 @@ class LoginProvider with ChangeNotifier {
             ),
           );
         });
+  }
+
+//---------------------------- [Navigations ]---------------------------------//
+//-------------------------------------------------------------------------------------------\\
+//----------------------Navigate to ForgotPassword page ---------------------------\\
+  void toForgotPassPage(context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return ForgotPasswordPage();
+    }));
   }
 //-------------------------------------------------------------------------------//
 }
