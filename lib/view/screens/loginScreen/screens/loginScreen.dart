@@ -19,7 +19,9 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     print('Build');
 //<----------------------------- Provider ------------------------------------------->\\
-    final logprovider = Provider.of<LoginProvider>(context, listen: false);
+    final logprovider = Provider.of<LoginProvider>(context,
+        listen:
+            false); //  now we can use logprovider to access loginprovider variable and functions
     return Scaffold(
       body: LayoutBuilder(builder: ((context, Constraints) {
         return SingleChildScrollView(
