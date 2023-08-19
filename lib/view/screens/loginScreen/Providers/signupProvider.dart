@@ -12,6 +12,11 @@ class SignupProvider with ChangeNotifier {
   bool _obsecureText = true;
   bool get obsecureText => _obsecureText;
 
+  void eyeButtonSwitch() {
+    _obsecureText = !_obsecureText;
+    notifyListeners();
+  }
+
   //-------------------------Variables to store user credentials--------------------------//
 
   final emailController = TextEditingController();

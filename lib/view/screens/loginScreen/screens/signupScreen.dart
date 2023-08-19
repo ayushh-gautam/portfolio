@@ -46,38 +46,45 @@ class _SignUpState extends State<SignUp> {
                         top: Constraints.maxHeight * 0.135,
                         right: Constraints.maxWidth * 0.032,
                         left: Constraints.maxWidth * 0.032),
-                    MyTextField(
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            signuppProvider.obsecuretext =
-                                !signuppProvider.obsecuretext;
-                          },
-                          child: Icon(signuppProvider.obsecureText
-                              ? Icons.visibility_off
-                              : Icons.visibility),
-                        ),
-                        obscureText: signuppProvider.obsecuretext,
-                        controller: signuppProvider.passCONtroller,
-                        text: 'Password ',
-                        top: Constraints.maxHeight * 0.05,
-                        right: Constraints.maxWidth * 0.032,
-                        left: Constraints.maxWidth * 0.032),
-                    MyTextField(
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            signuppProvider.obsecuretext =
-                                !signuppProvider.obsecuretext;
-                          },
-                          child: Icon(signuppProvider.obsecureText
-                              ? Icons.visibility_off
-                              : Icons.visibility),
-                        ),
-                        obscureText: signuppProvider.obsecureText,
-                        controller: signuppProvider.confirmPassControl,
-                        text: 'Confirm password ',
-                        top: Constraints.maxHeight * 0.05,
-                        right: Constraints.maxWidth * 0.032,
-                        left: Constraints.maxWidth * 0.032),
+
+                    Consumer<SignupProvider>(
+                        builder: (context, Snapshot, child) {
+                      return MyTextField(
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              Snapshot.eyeButtonSwitch();
+                            },
+                            child: Icon(Snapshot.obsecureText
+                                ? Icons.visibility_off
+                                : Icons.visibility),
+                          ),
+                          obscureText: Snapshot.obsecuretext,
+                          controller: Snapshot.passCONtroller,
+                          text: 'Password ',
+                          top: Constraints.maxHeight * 0.05,
+                          right: Constraints.maxWidth * 0.032,
+                          left: Constraints.maxWidth * 0.032);
+                    }),
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+                    Consumer<SignupProvider>(
+                        builder: (context, Snapshot, child) {
+                      return MyTextField(
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              Snapshot.eyeButtonSwitch();
+                            },
+                            child: Icon(Snapshot.obsecureText
+                                ? Icons.visibility_off
+                                : Icons.visibility),
+                          ),
+                          obscureText: Snapshot.obsecureText,
+                          controller: Snapshot.confirmPassControl,
+                          text: 'Confirm password ',
+                          top: Constraints.maxHeight * 0.05,
+                          right: Constraints.maxWidth * 0.032,
+                          left: Constraints.maxWidth * 0.032);
+                    }),
                     MyButton(
                       myText: 'Signup',
                       bottom: Constraints.maxHeight * 0.05,
