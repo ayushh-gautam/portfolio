@@ -6,7 +6,7 @@ import '../screens/forgotpassword.dart';
 import '../screens/signupScreen.dart';
 
 class LoginProvider with ChangeNotifier {
-  //---------------- veriables with there Functions -------------------------//
+  //---------------- variables with their functions -------------------------//
 //--------------------------------Function of Obsecure Text--------------------------//
   bool _obsecureText = true;
   bool get obsecureText => _obsecureText;
