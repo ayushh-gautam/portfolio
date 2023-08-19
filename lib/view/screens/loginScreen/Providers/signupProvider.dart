@@ -60,7 +60,7 @@ class SignupProvider with ChangeNotifier {
       showwError('Password doesn\'t match', context);
     }
   }
-
+//----------------------------- function that show error message ----------------------------//
   void showwError(String message, context) {
     showDialog(
         context: context,
