@@ -15,7 +15,7 @@ class MessagePage extends StatefulWidget {
 //--------------------Database------------------------\\
 class _MessagePageState extends State<MessagePage>
     with AutomaticKeepAliveClientMixin<MessagePage> {
-  bool get wantKeepAlive => false;
+  bool get wantKeepAlive => true;
   final user = FirebaseAuth.instance.currentUser!;
   List<String> documentid = [];
   Future getDocid() async {
