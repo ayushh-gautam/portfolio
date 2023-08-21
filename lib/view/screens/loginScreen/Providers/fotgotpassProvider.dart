@@ -35,7 +35,7 @@ class ForgotpassProvider with ChangeNotifier {
       }
 
       if (EmailController.text.trim() == '') {
-        // if the Email is empty
+        // if the Email is empty-------------------------------------------------\\
 
         showError('Enter your Email.', context);
       }
