@@ -16,7 +16,9 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
+//-------------------------------- Provider added --------------------------------------\\
     final forgotprovider = Provider.of<ForgotpassProvider>(context);
+//----------------------------------------------------------------------\\
     return Scaffold(body: LayoutBuilder(builder: ((context, Constraints) {
       return SingleChildScrollView(
           child: SafeArea(
@@ -28,11 +30,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+//--------------------------------  --------------------------------------\\
             MyText(
                 text: "Provide your Email",
                 color: Colors.white,
                 fontSize: 36,
                 fontWeight: FontWeight.w600),
+//--------------------------------  --------------------------------------\\
             Padding(
               padding: EdgeInsets.only(
                 top: Constraints.maxHeight * 0.024,
@@ -44,6 +48,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   fontSize: 24,
                   fontWeight: FontWeight.normal),
             ),
+//--------------------------------  --------------------------------------\\
+
             MyTextField(
                 controller: forgotprovider.EmailController,
                 text: 'Enter your Email',
@@ -51,6 +57,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 right: Constraints.maxWidth * 0.04,
                 left: Constraints.maxWidth * 0.034,
                 obscureText: false),
+//--------------------------------  --------------------------------------\\
+
             MyButton(
               myText: 'Send Link',
               ontap: () {
@@ -62,6 +70,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               height: Constraints.maxHeight * 0.077,
               width: Constraints.maxWidth * 0.85,
             ),
+//--------------------------------  --------------------------------------\\
+
             Center(
               child: Padding(
                 padding: EdgeInsets.only(top: Constraints.maxHeight * 0.08),
@@ -80,6 +90,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ),
               ),
             )
+//-----------------------------------------------------------------------------\\
           ],
         ),
       )));
