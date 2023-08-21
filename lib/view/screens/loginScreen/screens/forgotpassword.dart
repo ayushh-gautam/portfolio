@@ -31,13 +31,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-//--------------------------------  --------------------------------------\\
+//-------------------------------- Text --------------------------------------\\
             MyText(
                 text: "Provide your Email",
                 color: Colors.white,
                 fontSize: 36,
                 fontWeight: FontWeight.w600),
-//--------------------------------  --------------------------------------\\
+//-------------------------------- Text --------------------------------------\\
             Padding(
               padding: EdgeInsets.only(
                 top: Constraints.maxHeight * 0.024,
@@ -49,7 +49,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   fontSize: 24,
                   fontWeight: FontWeight.normal),
             ),
-//--------------------------------  --------------------------------------\\
+//-------------------------------- TextField for Email  -----------------------------\\
 
             MyTextField(
                 controller: forgotprovider.EmailController,
@@ -58,11 +58,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 right: Constraints.maxWidth * 0.04,
                 left: Constraints.maxWidth * 0.034,
                 obscureText: false),
-//--------------------------------  --------------------------------------\\
 
+//-------------------------------- Button --------------------------------------\\
             MyButton(
               myText: 'Send Link',
               ontap: () {
+                //---------------------------------------------------------------> Button Email
                 forgotprovider.sendlink(context);
               },
               left: Constraints.maxWidth * 0.034,
@@ -71,13 +72,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               height: Constraints.maxHeight * 0.077,
               width: Constraints.maxWidth * 0.85,
             ),
-//--------------------------------  --------------------------------------\\
+//-------------------------------- Back Button --------------------------------------\\
 
             Center(
               child: Padding(
                 padding: EdgeInsets.only(top: Constraints.maxHeight * 0.08),
                 child: GestureDetector(
                   onTap: () {
+                    //------------------------------------------------------------->Button Back
                     Navigator.pop(context);
                   },
                   child: Container(
