@@ -17,7 +17,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
 //-------------------------------- Provider added --------------------------------------\\
-    final forgotprovider = Provider.of<ForgotpassProvider>(context);
+    final forgotprovider =
+        Provider.of<ForgotpassProvider>(context, listen: false);
 //----------------------------------------------------------------------\\
     return Scaffold(body: LayoutBuilder(builder: ((context, Constraints) {
       return SingleChildScrollView(
