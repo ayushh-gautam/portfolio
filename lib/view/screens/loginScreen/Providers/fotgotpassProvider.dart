@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ForgotpassProvider with ChangeNotifier {
+//----------------------------- Veriables --------------------------------\\
   TextEditingController _EmailController = TextEditingController();
   TextEditingController get EmailController => _EmailController;
 
