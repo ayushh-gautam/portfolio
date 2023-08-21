@@ -8,11 +8,11 @@ class ForgotpassProvider with ChangeNotifier {
 //----------------------------- Veriables --------------------------------\\
   TextEditingController _EmailController = TextEditingController();
   TextEditingController get EmailController => _EmailController;
-
+//----------------------------------------------------------------------------\\
   Future sendlink(context) async {
     try {
-      //if the try catch is not working and throwing exceptation than it means
-      //you havent use await keywoard
+      //if the try catch is not working and throwing exceptation than it means------\\
+      //you havent use await keywoard----------------------------------------------\\
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: EmailController.text.trim())
           .then((value) => showDialog(
