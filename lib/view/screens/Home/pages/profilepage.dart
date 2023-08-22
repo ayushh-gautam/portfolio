@@ -145,6 +145,7 @@ class _ProfilePageState extends State<ProfilePage> {
       }
     }
 
+
 //------------------------------------------- MAIN ------------------------------------------------\\
 //--------------------------------------------- Futue Builder to Fetch data (data) -------------------\\
     return FutureBuilder<DocumentSnapshot>(
