@@ -13,7 +13,7 @@ class NewMessagePage extends StatefulWidget {
 
 class _NewMessagePageState extends State<NewMessagePage>
     with AutomaticKeepAliveClientMixin {
-  bool get wantKeepAlive => false;
+  bool get wantKeepAlive => true;
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
