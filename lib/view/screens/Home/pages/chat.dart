@@ -168,7 +168,10 @@ class _ChatPageState extends State<ChatPage> {
             onPressed: () {
               sendMessage1();
             },
-            icon: Icon(Icons.arrow_upward))
+            icon: Icon(
+              Icons.arrow_upward,
+              color: Colors.white,
+            ))
       ],
     );
   }
