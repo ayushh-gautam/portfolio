@@ -124,14 +124,16 @@ class _ChatPageState extends State<ChatPage> {
     return Container(
       alignment: alignment,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: (alignment == Alignment.centerRight)
+            ? CrossAxisAlignment.end
+            : CrossAxisAlignment.start,
         children: [
           MyText(
               text: data['senderEmail'] == _firebaseAuth.currentUser!.email
                   ? "."
-                  : data['senderEmail'],
+                  : "$data['senderEmail']".split('@')[0].split(':')[1],
               color: Colors.green,
-              fontSize: 18,
+              fontSize: 15,
               fontWeight: FontWeight.normal),
           Container(
             decoration: BoxDecoration(
@@ -142,7 +144,7 @@ class _ChatPageState extends State<ChatPage> {
               child: MyText(
                   text: data['message'],
                   color: Colors.white,
-                  fontSize: 30,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),
           )
