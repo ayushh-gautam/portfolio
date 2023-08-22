@@ -158,13 +158,16 @@ class _ChatPageState extends State<ChatPage> {
     return Row(
       children: [
         Expanded(
-          child: MyTextField(
-              controller: messageController,
-              text: 'Type Here...',
-              top: 0,
-              right: 0,
-              left: 0,
-              obscureText: false),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: MyTextField(
+                controller: messageController,
+                text: 'Type Here...',
+                top: 0,
+                right: 0,
+                left: 0,
+                obscureText: false),
+          ),
         ),
         IconButton(
             onPressed: () {
