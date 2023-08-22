@@ -1,0 +1,28 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:portfolio/view/screens/Home/model/messageMode.dart';
+
+class ChatService extends ChangeNotifier {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  // Send message
+
+  Future<void> sendMessage(String receiverId, String message) async {
+    // current user information
+    final String currentUserId = _firebaseAuth.currentUser!.uid;
+    final String currentUserEmail = _firebaseAuth.currentUser!.email.toString();
+    final Timestamp timestamp = Timestamp.now();
+
+    //create a new message
+    MessageModel
+
+// construct chatroom id for current user and receiver id <sorted to ensure uniqueness>
+
+// add new message to database
+  }
+
+  // Get message
+}
