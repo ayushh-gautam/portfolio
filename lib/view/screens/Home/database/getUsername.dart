@@ -7,9 +7,6 @@ class GetUsername extends StatelessWidget {
   String documentids;
   GetUsername({super.key, required this.documentids});
 
-  
-
-
   @override
   Widget build(BuildContext context) {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
