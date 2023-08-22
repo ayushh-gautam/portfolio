@@ -38,13 +38,14 @@ class _ChatPageState extends State<ChatPage> {
           widget.recieverEmail, messageController.text);
 
       // clear the controller after sending the message
-      messageController.clear();
     }
+    messageController.clear();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Row(
             children: [
@@ -79,6 +80,34 @@ class _ChatPageState extends State<ChatPage> {
   }
   // build message list
 
+  Widget _buildMessageList() {
+    return StreamBuilder(
+        stream: _chatService.getMessages(
+            widget.recieverEmail, _firebaseAuth.currentUser!.email.toString()),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return MyText(
+                text: 'Error' + snapshot.error.toString(),
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.normal);
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return MyText(
+                text: 'loadingg...',
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.normal);
+          }
+
+          return ListView(
+            children: snapshot.data!.docs
+                .map((document) => _buildMessageItem(document))
+                .toList(),
+          );
+        });
+  }
+
   // build messsge  item
   Widget _buildMessageItem(DocumentSnapshot document) {
     Map<String, dynamic> data = document.data() as Map<String, dynamic>;
@@ -93,9 +122,9 @@ class _ChatPageState extends State<ChatPage> {
         children: [
           Text(
             data['senderEmail'],
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.black),
           ),
-          Text(data['message'], style: TextStyle(color: Colors.white)),
+          Text(data['message'], style: TextStyle(color: Colors.black)),
         ],
       ),
     );
@@ -109,7 +138,13 @@ class _ChatPageState extends State<ChatPage> {
           child: MyTextField(
               text: 'huhu', top: 0, right: 0, left: 0, obscureText: false),
         ),
-        IconButton(onPressed: sendMessage, icon: Icon(Icons.arrow_upward))
+        IconButton(
+            onPressed: () {
+              setState(() {
+                sendMessage();
+              });
+            },
+            icon: Icon(Icons.arrow_upward))
       ],
     );
   }
