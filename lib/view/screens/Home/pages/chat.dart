@@ -51,7 +51,6 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           title: Row(
             children: [
@@ -125,12 +124,28 @@ class _ChatPageState extends State<ChatPage> {
     return Container(
       alignment: alignment,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text(
-            data['senderEmail'],
-            style: TextStyle(color: Colors.black),
-          ),
-          Text(data['message'], style: TextStyle(color: Colors.black)),
+          MyText(
+              text: data['senderEmail'] == _firebaseAuth.currentUser!.email
+                  ? "."
+                  : data['senderEmail'],
+              color: Colors.green,
+              fontSize: 18,
+              fontWeight: FontWeight.normal),
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.blue, borderRadius: BorderRadius.circular(14)),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: 10, bottom: 10, left: 20, right: 20),
+              child: MyText(
+                  text: data['message'],
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold),
+            ),
+          )
         ],
       ),
     );
