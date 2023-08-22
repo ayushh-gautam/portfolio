@@ -17,10 +17,17 @@ class ChatService extends ChangeNotifier {
     final Timestamp timestamp = Timestamp.now();
 
     //create a new message
-    MessageModel
+    MessageModel newMessage = MessageModel(
+      senderId: currentUserId,
+      senderEmail: currentUserEmail,
+      receiverId: receiverId,
+      message: message,
+      timestamp: timestamp,
+    );
 
 // construct chatroom id for current user and receiver id <sorted to ensure uniqueness>
-
+    List<String> ids = [currentUserId, receiverId];
+    ids.sort();
 // add new message to database
   }
 
