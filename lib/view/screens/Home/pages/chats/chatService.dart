@@ -18,10 +18,10 @@ class ChatService extends ChangeNotifier {
 
     //create a new message
     MessageModel newMessage = MessageModel(
-      message: message,
-      timestamp: timestamp,
       senderEmail: currentUserEmail,
       receiverEmail: receiverEmail,
+      message: message,
+      timestamp: timestamp,
     );
 
 // construct chatroom id for current user and receiver id <sorted to ensure uniqueness>

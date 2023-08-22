@@ -9,7 +9,7 @@ import 'package:portfolio/view/screens/loginScreen/elements/textField.dart';
 
 class ChatPage extends StatefulWidget {
   String recieverEmail;
-  String? recieverUsername;
+  String recieverUsername;
   String? recieverphotoUrl;
   ChatPage(
       {Key? key,
@@ -20,26 +20,32 @@ class ChatPage extends StatefulWidget {
 
   @override
   State<ChatPage> createState() => _ChatPageState(
-      recieverUsername: recieverUsername, recieverphotoUrl: recieverphotoUrl);
+      recieverEmail: recieverEmail,
+      recieverphotoUrl: recieverphotoUrl,
+      recieverUsername: recieverUsername);
 }
 
 class _ChatPageState extends State<ChatPage> {
+  String recieverEmail;
   String? recieverUsername;
   String? recieverphotoUrl;
-  final messageController = TextEditingController();
+  TextEditingController messageController = TextEditingController();
   final ChatService _chatService = ChatService();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   _ChatPageState(
-      {required this.recieverUsername, required this.recieverphotoUrl});
+      {required this.recieverUsername,
+      required this.recieverphotoUrl,
+      required this.recieverEmail});
 
-  void sendMessage() async {
+  void sendMessage1() async {
     if (messageController.text.isNotEmpty) {
       await _chatService.sendMessage(
           widget.recieverEmail, messageController.text);
 
       // clear the controller after sending the message
+      print('hello');
+      messageController.clear();
     }
-    messageController.clear();
   }
 
   @override
@@ -136,12 +142,17 @@ class _ChatPageState extends State<ChatPage> {
       children: [
         Expanded(
           child: MyTextField(
-              text: 'huhu', top: 0, right: 0, left: 0, obscureText: false),
+              controller: messageController,
+              text: 'huhu',
+              top: 0,
+              right: 0,
+              left: 0,
+              obscureText: false),
         ),
         IconButton(
             onPressed: () {
               setState(() {
-                sendMessage();
+                sendMessage1();
               });
             },
             icon: Icon(Icons.arrow_upward))
