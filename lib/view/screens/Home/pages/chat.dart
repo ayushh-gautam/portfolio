@@ -143,7 +143,7 @@ class _ChatPageState extends State<ChatPage> {
         Expanded(
           child: MyTextField(
               controller: messageController,
-              text: 'huhu',
+              text: 'Type Here...',
               top: 0,
               right: 0,
               left: 0,
@@ -151,9 +151,7 @@ class _ChatPageState extends State<ChatPage> {
         ),
         IconButton(
             onPressed: () {
-              setState(() {
-                sendMessage1();
-              });
+              sendMessage1();
             },
             icon: Icon(Icons.arrow_upward))
       ],
