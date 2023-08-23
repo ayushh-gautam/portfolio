@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/pages/chats/chatService.dart';
@@ -37,14 +38,20 @@ class _ChatPageState extends State<ChatPage> {
       required this.recieverphotoUrl,
       required this.recieverEmail});
 
+//------------------------------------------------------------------
+  ScrollController _scrollController = ScrollController();
+
   void sendMessage1() async {
     if (messageController.text.isNotEmpty) {
       await _chatService.sendMessage(
           widget.recieverEmail, messageController.text);
-
       // clear the controller after sending the message
-      print('hello');
+
       messageController.clear();
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(_scrollController.position.maxScrollExtent,
+            duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+      }
     }
   }
 
@@ -77,7 +84,9 @@ class _ChatPageState extends State<ChatPage> {
         body: Column(
           children: [
             Expanded(
-              child: _buildMessageList(),
+              child: Container(
+                  margin: EdgeInsets.only(bottom: 9),
+                  child: _buildMessageList()),
             ),
             _buildMessageInput()
           ],
@@ -104,8 +113,9 @@ class _ChatPageState extends State<ChatPage> {
                 fontSize: 24,
                 fontWeight: FontWeight.normal);
           }
-
+//--------------------------------------------------------------------------------
           return ListView(
+            controller: _scrollController,
             children: snapshot.data!.docs
                 .map((document) => _buildMessageItem(document))
                 .toList(),
