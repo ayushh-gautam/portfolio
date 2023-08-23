@@ -138,13 +138,20 @@ class _ChatPageState extends State<ChatPage> {
             ? CrossAxisAlignment.end
             : CrossAxisAlignment.start,
         children: [
-          MyText(
-              text: data['senderEmail'] == _firebaseAuth.currentUser!.email
-                  ? "."
-                  : "$data['senderEmail']".split('@')[0].split(':')[1],
-              color: Colors.green,
-              fontSize: 15,
-              fontWeight: FontWeight.normal),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Image.network(
+              recieverphotoUrl!,
+              scale: 0.2,
+            ),
+          ),
+          // MyText(
+          //     text: data['senderEmail'] == _firebaseAuth.currentUser!.email
+          //         ? "."
+          //         : "$data['senderEmail']".split('@')[0].split(':')[1],
+          //     color: Colors.green,
+          //     fontSize: 15,
+          //     fontWeight: FontWeight.normal),
           Container(
             decoration: BoxDecoration(
                 color: Colors.blue, borderRadius: BorderRadius.circular(14)),
