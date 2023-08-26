@@ -12,9 +12,9 @@ class AuthService {
         final credential = GoogleAuthProvider.credential(
             accessToken: gauth.accessToken, idToken: gauth.idToken);
 
-        FirebaseFirestore.instance.collection('users').doc(guser.email).set({
-          'email': guser.email,
-        }, SetOptions(merge: true));
+        FirebaseFirestore.instance.collection('users').doc(guser.email).set(
+            {'email': guser.email, 'username': guser.email.split('@')[0]},
+            SetOptions(merge: true));
         return await FirebaseAuth.instance.signInWithCredential(credential);
       } else {
         return null;

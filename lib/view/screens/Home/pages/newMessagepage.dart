@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/pages/chat.dart';
 
@@ -62,10 +63,16 @@ class _NewMessagePageState extends State<NewMessagePage>
           );
         }
 
-        return ListView(
-          children: snapshot.data!.docs.map((DocumentSnapshot document) {
-            return _buildUserListItem(document);
-          }).toList(),
+        return Container(
+          height: MediaQuery.of(context).size.height * 0.87,
+          child: ListView(
+            physics: BouncingScrollPhysics(),
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).size.height * 0.1),
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              return _buildUserListItem(document);
+            }).toList(),
+          ),
         );
       },
     );

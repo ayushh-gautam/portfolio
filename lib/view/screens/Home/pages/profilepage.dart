@@ -28,7 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController genderController = TextEditingController();
   TextEditingController numberController = TextEditingController();
   String? fields;
-  final String userfield = 'Username';
+  final String userfield = 'Display Name';
   final String proffield = 'Profession';
   final String genderfield = 'Gender';
   final String numfield = 'Number';
@@ -217,7 +217,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   constraints.maxWidth * 0.3),
                               height: constraints.maxHeight * 0.08,
                               Field: userfield,
-                              Value: data['username']),
+                              Value: data['display name'] ?? ''),
                         ),
 //-------------------------------------------------------------------------------------------\\
 //----------------------------------------- Profession Field Starts --------------------------------------------------\\
