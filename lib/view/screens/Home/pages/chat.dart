@@ -115,6 +115,7 @@ class _ChatPageState extends State<ChatPage> {
           }
 //--------------------------------------------------------------------------------
           return ListView(
+            physics: BouncingScrollPhysics(),
             controller: _scrollController,
             children: snapshot.data!.docs
                 .map((document) => _buildMessageItem(document))
