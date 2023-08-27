@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:portfolio/elements/myText.dart';
+import 'package:portfolio/view/screens/Home/database/updateprofile.dart';
 import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
 import 'package:portfolio/view/screens/Home/pages/genderPage.dart';
 
@@ -37,7 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
 //-----------------------------------------------------------------------------\\
 //---------------------------------Function Image picker from device --------------------------------------------\\
   Future getImage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) {
       return;
     }
@@ -50,13 +51,14 @@ class _ProfilePageState extends State<ProfilePage> {
     }
     setState(() {
       imageCache.clear();
-      this._image = File(croppedimage!.path);
+      this._image = File(croppedimage.path);
+      updateprofilePic.updatePictue(File(croppedimage.path));
     });
   }
 
 //-----------------------------------------------------------------------------\\
 //-----------------------------------------------------------------------------\\
-  @override
+
   @override
   Widget build(BuildContext context) {
     //------------------ Function to edit profile (Update with Alert box)-------------------\\
@@ -185,10 +187,15 @@ class _ProfilePageState extends State<ProfilePage> {
                                             scale: 1,
                                             fit: BoxFit.fill,
                                           )
-                                        : Image.asset(
-                                            'lib/assets/images/person.png',
-                                            scale: 0.5,
-                                          )
+                                        : data['photoUrl'] == null
+                                            ? Image.asset(
+                                                'lib/assets/images/person.png',
+                                                scale: 0.5,
+                                              )
+                                            : Image.network(
+                                                data['photoUrl'],
+                                                scale: 1,
+                                              )
                                     // child: ("$data['photoUrl']" == '')
                                     //     ? Image.asset(
                                     //         'lib/assets/images/person.png',

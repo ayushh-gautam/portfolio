@@ -27,6 +27,7 @@ dependencies:
   image_cropper: ^5.0.0
   permission_handler: ^10.4.3
   provider: ^6.0.5
+  firebase_storage: ^11.2.6
 
 dev_dependencies:
   flutter_test:
