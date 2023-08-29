@@ -37,7 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
 //-----------------------------------------------------------------------------\\
 //---------------------------------Function Image picker from device --------------------------------------------\\
-  Future getImage() async {
+  Future<void> getImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image == null) {
       return;
