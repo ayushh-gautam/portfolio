@@ -12,6 +12,7 @@ import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/database/updateprofile.dart';
 import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
 import 'package:portfolio/view/screens/Home/pages/genderPage.dart';
+import 'package:portfolio/view/screens/loginScreen/Providers/profileProvider.dart';
 
 //----------- main clas ProfilePage-------------\\
 class ProfilePage extends StatefulWidget {
@@ -37,24 +38,24 @@ class _ProfilePageState extends State<ProfilePage> {
 
 //-----------------------------------------------------------------------------\\
 //---------------------------------Function Image picker from device --------------------------------------------\\
-  Future<void> getImage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image == null) {
-      return;
-    }
-    final imagetemporary = File(image.path);
-    final croppedimage = await ImageCropper().cropImage(
-        sourcePath: imagetemporary.path,
-        aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
-    if (croppedimage == null) {
-      return;
-    }
-    setState(() {
-      imageCache.clear();
-      this._image = File(croppedimage.path);
-      updateprofilePic.updatePictue(File(croppedimage.path));
-    });
-  }
+  // Future<void> getImage() async {
+  //   final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+  //   if (image == null) {
+  //     return;
+  //   }
+  //   final imagetemporary = File(image.path);
+  //   final croppedimage = await ImageCropper().cropImage(
+  //       sourcePath: imagetemporary.path,
+  //       aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
+  //   if (croppedimage == null) {
+  //     return;
+  //   }
+  //   setState(() {
+  //     imageCache.clear();
+  //     _image = File(croppedimage.path);
+  //     updateprofilePic.updatePictue(File(croppedimage.path));
+  //   });
+  // }
 
 //-----------------------------------------------------------------------------\\
 //-----------------------------------------------------------------------------\\
@@ -171,7 +172,12 @@ class _ProfilePageState extends State<ProfilePage> {
 //--------------------------------------------- Profile Image starts ----------------------------------------------\\
                         Center(
                           child: GestureDetector(
-                            onTap: getImage,
+                            onTap: () async {
+                              changeProfileImage
+                                  .getImage()
+                                  .then((value) => setState(() {}));
+                            },
+                            //onTap: getImage,
                             child: Container(
                               height: constraints.maxHeight * 0.18,
                               decoration: BoxDecoration(
@@ -181,9 +187,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 padding: const EdgeInsets.all(10.0),
                                 child: ClipRRect(
                                     borderRadius: BorderRadius.circular(200),
-                                    child: _image != null
+                                    child: changeProfileImage.imagess != null
                                         ? Image.file(
-                                            _image!,
+                                            changeProfileImage.imagess!,
                                             scale: 1,
                                             fit: BoxFit.fill,
                                           )
@@ -195,6 +201,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                             : Image.network(
                                                 data['photoUrl'],
                                                 scale: 1,
+                                                fit: BoxFit.fill,
                                               )
                                     // child: ("$data['photoUrl']" == '')
                                     //     ? Image.asset(
