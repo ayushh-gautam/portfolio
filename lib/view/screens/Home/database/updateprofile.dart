@@ -11,7 +11,7 @@ class ChangeProfilePic {
 //< to select image from Device-------------------------------->
   static File? imagess;
   static Future<void> getImage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image == null) {
       return;
     }
