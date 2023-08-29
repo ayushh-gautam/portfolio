@@ -3,8 +3,32 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 
-class updateprofilePic {
+class ChangeProfilePic {
+//< to select image from Device-------------------------------->
+  static File? imagess;
+  static Future<void> getImage() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (image == null) {
+      return;
+    }
+    final imagetemporary = File(image.path);
+    final croppedimage = await ImageCropper().cropImage(
+        sourcePath: imagetemporary.path,
+        aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
+    if (croppedimage == null) {
+      return;
+    }
+
+    imageCache.clear();
+    imagess = File(croppedimage.path);
+    updatePictue(File(croppedimage.path));
+  }
+//<-------------------------------------------------------------------------->
+
   static final user = FirebaseAuth.instance.currentUser!;
 
   //futue function

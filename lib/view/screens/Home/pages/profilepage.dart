@@ -173,8 +173,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         Center(
                           child: GestureDetector(
                             onTap: () async {
-                              changeProfileImage
-                                  .getImage()
+                              ChangeProfilePic.getImage()
                                   .then((value) => setState(() {}));
                             },
                             //onTap: getImage,
@@ -187,9 +186,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 padding: const EdgeInsets.all(10.0),
                                 child: ClipRRect(
                                     borderRadius: BorderRadius.circular(200),
-                                    child: changeProfileImage.imagess != null
+                                    child: ChangeProfilePic.imagess != null
                                         ? Image.file(
-                                            changeProfileImage.imagess!,
+                                            ChangeProfilePic.imagess!,
                                             scale: 1,
                                             fit: BoxFit.fill,
                                           )
