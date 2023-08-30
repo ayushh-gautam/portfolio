@@ -38,24 +38,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
 //-----------------------------------------------------------------------------\\
 //---------------------------------Function Image picker from device --------------------------------------------\\
-  // Future<void> getImage() async {
-  //   final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-  //   if (image == null) {
-  //     return;
-  //   }
-  //   final imagetemporary = File(image.path);
-  //   final croppedimage = await ImageCropper().cropImage(
-  //       sourcePath: imagetemporary.path,
-  //       aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
-  //   if (croppedimage == null) {
-  //     return;
-  //   }
-  //   setState(() {
-  //     imageCache.clear();
-  //     _image = File(croppedimage.path);
-  //     updateprofilePic.updatePictue(File(croppedimage.path));
-  //   });
-  // }
+    //<-- we have used Update profile page for now--?>
+
 
 //-----------------------------------------------------------------------------\\
 //-----------------------------------------------------------------------------\\
