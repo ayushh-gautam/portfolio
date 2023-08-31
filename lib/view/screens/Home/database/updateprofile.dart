@@ -16,6 +16,7 @@ class ChangeProfilePic {
       return;
     }
     final imagetemporary = File(image.path);
+    //<!-- Note added the code to XML file  to user image cropper i already added  -->
     final croppedimage = await ImageCropper().cropImage(
         sourcePath: imagetemporary.path,
         aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1));
