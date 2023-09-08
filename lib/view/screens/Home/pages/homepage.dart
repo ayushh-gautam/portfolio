@@ -7,6 +7,8 @@ import 'package:flutter/rendering.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/elements/Timeline%20Tiles%20Elements/myTimeLineTiles.dart';
 import 'package:portfolio/view/screens/Home/pages/profilepage.dart';
+import 'package:portfolio/view/screens/loginScreen/Providers/homepageProvider.dart';
+import 'package:provider/provider.dart';
 
 import '../elements/Timeline Tiles Elements/TimelineChild.dart';
 
@@ -43,6 +45,7 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    final provs = Provider.of<HomePageProvider>(context);
     return LayoutBuilder(builder: (context, Constraints) {
       return SafeArea(
         child: Scaffold(
@@ -122,7 +125,9 @@ class _HomePageState extends State<HomePage>
                                 islast: false,
                                 endChild: TimelineChild(
                                   text: 'CV / Resume',
-                                  ontap: () {},
+                                  ontap: () {
+                                    provs.pickFile();
+                                  },
                                 )),
                             MyTimeLineTiles(
                                 isfirst: false,
