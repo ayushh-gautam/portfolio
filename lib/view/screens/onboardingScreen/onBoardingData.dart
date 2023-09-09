@@ -14,7 +14,7 @@ final List<Onboard> demo_data = [
       description: 'No need to worry about\nMaking your website'),
   Onboard(
       image: 'lib/assets/images/magnet.png',
-      title: 'Increase\nConnections',
+      title: 'Increase\nConnection',
       description: 'Add friends and\ncommunicate with them.'),
   Onboard(
       image: 'lib/assets/images/getConnected.png',
