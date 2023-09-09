@@ -50,9 +50,17 @@ class HomePageProvider with ChangeNotifier {
     });
   }
 
-  void openfile() {}
+  void openfile() {
+
+  }
+    void getpdf() async {
+    final result= FirebaseFirestore.instance
+        .collection('Cvs')
+        .doc(ChangeProfilePic.user.email)
+        .get();
+  }
 //-------------------------------------------------------------------------------
-  void showOptions(context,pdf_Url) {
+  void showOptions(context, pdf_Url) {
     showDialog(
         context: context,
         builder: (ctxt) => new AlertDialog(
@@ -112,3 +120,4 @@ class HomePageProvider with ChangeNotifier {
             ));
   }
 }
+

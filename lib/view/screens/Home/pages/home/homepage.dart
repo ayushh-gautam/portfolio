@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage>
                                 endChild: TimelineChild(
                                   text: 'CV / Resume',
                                   ontap: () {
-                                    provs.showOptions(context,pdf_Url);
+                                    provs.getpdf();
                                   },
                                 )),
                             MyTimeLineTiles(
@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage>
                                 islast: false,
                                 endChild: TimelineChild(
                                   ontap: () {
-                                    provs.showOptions(context);
+                                  
                                   },
                                   text: 'Project',
                                 )),
