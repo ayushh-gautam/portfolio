@@ -30,6 +30,7 @@ dependencies:
   firebase_storage: ^11.2.6
   file_picker: ^5.5.0
   open_file: ^3.3.2
+  easy_pdf_viewer: ^1.0.7
 
 dev_dependencies:
   flutter_test:
