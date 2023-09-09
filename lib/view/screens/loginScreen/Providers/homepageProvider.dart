@@ -1,26 +1,52 @@
 // ignore_for_file: unnecessary_new
 
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
-import 'package:portfolio/view/screens/loginScreen/elements/customButton.dart';
+import 'package:portfolio/view/screens/Home/database/updateprofile.dart';
 
 class HomePageProvider with ChangeNotifier {
-  void pickFile() async {
+  void pickFile(context) async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: [
           'pdf',
         ],
         allowMultiple: false);
+
     if (result != null) {
       PlatformFile pickfile = result.files.first;
-      print(pickfile.name);
-      print(pickfile.bytes);
-      print(pickfile.path);
-      print(pickfile.extension);
+      File filess = File(pickfile.path!);
+      updateCV(filess).whenComplete(() {
+        Navigator.pop(context);
+      });
     }
+
     notifyListeners();
+  }
+
+//futue function
+  Future<void> updateCV(File file) async {
+    //to get the extention of image
+    //update image to storage
+    final ref = FirebaseStorage.instance
+        .ref()
+        .child('Cvs/${ChangeProfilePic.user.email}.pdf');
+    await ref
+        .putFile(file, SettableMetadata(contentType: 'CVs.pdf'))
+        .then((p0) => print("data transfer :${p0.bytesTransferred / 1000} kb"));
+
+    ref.getDownloadURL().then((value) {
+      //updating data in firestore
+      FirebaseFirestore.instance
+          .collection('pdf')
+          .doc(ChangeProfilePic.user.email)
+          .set({'pdf': value});
+    });
   }
 
   void openfile() {}
@@ -36,7 +62,7 @@ class HomePageProvider with ChangeNotifier {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     InkWell(
-                      onTap: () => pickFile(),
+                      onTap: () => pickFile(context),
                       child: Container(
                           height: 70,
                           width: 110,
