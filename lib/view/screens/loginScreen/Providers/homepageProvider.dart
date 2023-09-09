@@ -8,6 +8,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/database/updateprofile.dart';
+import 'package:portfolio/view/screens/Home/pages/home/pdfViewer.dart';
 
 class HomePageProvider with ChangeNotifier {
   void pickFile(context) async {
@@ -51,7 +52,7 @@ class HomePageProvider with ChangeNotifier {
 
   void openfile() {}
 //-------------------------------------------------------------------------------
-  void showOptions(context) {
+  void showOptions(context,pdf_Url) {
     showDialog(
         context: context,
         builder: (ctxt) => new AlertDialog(
@@ -81,10 +82,15 @@ class HomePageProvider with ChangeNotifier {
 
 //--------------------------- Cancel button of alert box closed.-------------------------------\\
 
-                    //--------------------------- Done button Startss .-------------------------------\\
+                    //--------------------------- Open file button Starts .-------------------------------\\
 
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return PdfViewerPage(pdf_Url: pdf_Url);
+                        }));
+                      },
                       child: Container(
                           height: 70,
                           width: 110,

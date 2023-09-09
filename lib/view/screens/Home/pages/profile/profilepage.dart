@@ -3,15 +3,14 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
-import 'package:image_cropper/image_cropper.dart';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/database/updateprofile.dart';
 import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
-import 'package:portfolio/view/screens/Home/pages/genderPage.dart';
-import 'package:portfolio/view/screens/loginScreen/Providers/profileProvider.dart';
+import 'package:portfolio/view/screens/Home/pages/profile/genderPage.dart';
+
 
 //----------- main clas ProfilePage-------------\\
 class ProfilePage extends StatefulWidget {

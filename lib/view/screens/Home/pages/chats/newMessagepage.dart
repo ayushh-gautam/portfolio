@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:portfolio/elements/myText.dart';
-import 'package:portfolio/view/screens/Home/pages/chat.dart';
+import 'package:portfolio/view/screens/Home/pages/chats/chat.dart';
 
 class NewMessagePage extends StatefulWidget {
   const NewMessagePage({super.key});

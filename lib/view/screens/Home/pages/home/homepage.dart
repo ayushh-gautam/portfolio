@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/elements/Timeline%20Tiles%20Elements/myTimeLineTiles.dart';
-import 'package:portfolio/view/screens/Home/pages/profilepage.dart';
+import 'package:portfolio/view/screens/Home/pages/profile/profilepage.dart';
 import 'package:portfolio/view/screens/loginScreen/Providers/homepageProvider.dart';
 import 'package:provider/provider.dart';
 
-import '../elements/Timeline Tiles Elements/TimelineChild.dart';
+import '../../elements/Timeline Tiles Elements/TimelineChild.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage>
                                 endChild: TimelineChild(
                                   text: 'CV / Resume',
                                   ontap: () {
-                                    provs.showOptions(context);
+                                    provs.showOptions(context,pdf_Url);
                                   },
                                 )),
                             MyTimeLineTiles(

@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:portfolio/view/screens/Home/pages/addpeoplepage.dart';
-import 'package:portfolio/view/screens/Home/pages/homepage.dart';
+import 'package:portfolio/view/screens/Home/pages/home/homepage.dart';
 
-import 'package:portfolio/view/screens/Home/pages/newMessagepage.dart';
+import 'package:portfolio/view/screens/Home/pages/chats/newMessagepage.dart';
 import 'package:portfolio/view/screens/Home/pages/settingpage.dart';
 
 class MyNavigationBar2 extends StatefulWidget {

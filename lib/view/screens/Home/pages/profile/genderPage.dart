@@ -4,9 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/elements/myText.dart';
-import 'package:portfolio/view/screens/Home/pages/profilepage.dart';
+import 'package:portfolio/view/screens/Home/pages/profile/profilepage.dart';
 
-import '../elements/genderTile.dart';
+import '../../elements/genderTile.dart';
 
 class Gender extends StatefulWidget {
   const Gender({super.key});
