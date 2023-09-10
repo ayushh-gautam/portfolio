@@ -50,17 +50,10 @@ class HomePageProvider with ChangeNotifier {
     });
   }
 
-  void openfile() {
+  void openfile() {}
 
-  }
-    void getpdf() async {
-    final result= FirebaseFirestore.instance
-        .collection('Cvs')
-        .doc(ChangeProfilePic.user.email)
-        .get();
-  }
 //-------------------------------------------------------------------------------
-  void showOptions(context, pdf_Url) {
+  void showOptions(context) {
     showDialog(
         context: context,
         builder: (ctxt) => new AlertDialog(
@@ -93,12 +86,7 @@ class HomePageProvider with ChangeNotifier {
                     //--------------------------- Open file button Starts .-------------------------------\\
 
                     InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return PdfViewerPage(pdf_Url: pdf_Url);
-                        }));
-                      },
+                      onTap: () {},
                       child: Container(
                           height: 70,
                           width: 110,
@@ -120,4 +108,3 @@ class HomePageProvider with ChangeNotifier {
             ));
   }
 }
-

@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/view/screens/Home/database/updateprofile.dart';
 
 class PdfViewerPage extends StatefulWidget {
   PdfViewerPage({
@@ -25,6 +27,17 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
     void initState() {
       super.initState();
       initdoc();
+    }
+
+    void getpdf(context) async {
+      final result = await FirebaseFirestore.instance
+          .collection('pdf')
+          .doc(ChangeProfilePic.user.email)
+          .get()
+          .then((value) =>
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return PdfViewerPage(pdf_Url: value['pdf']);
+              })));
     }
 
     return Scaffold(
