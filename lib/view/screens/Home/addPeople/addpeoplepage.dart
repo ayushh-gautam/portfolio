@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/loginScreen/elements/textField.dart';
 
 class AddPeoplePage extends StatefulWidget {
@@ -46,6 +47,7 @@ class _AddPeoplePageState extends State<AddPeoplePage>
                             color: Colors.white,
                           ),
                         ),
+                        peopleTile(data, Constraints)
                       ],
                     ),
                   ),
@@ -56,4 +58,48 @@ class _AddPeoplePageState extends State<AddPeoplePage>
           return Center(child: CircularProgressIndicator());
         }));
   }
+}
+
+Widget peopleTile(data, Constraints) {
+  return Expanded(
+      child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(Constraints.maxWidth * 0.02),
+                  child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xff323232),
+                          borderRadius: BorderRadius.circular(12)),
+                      height: Constraints.maxWidth * 0.25,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(200),
+                              child: ("${data['photoUrl']}" == '')
+                                  ? Image.asset('lib/assets/images/person.png',
+                                      scale: 1.0)
+                                  : Image.network('${data['photoUrl']}',
+                                      scale: 1.0),
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            MyText(
+                                text: data['username'],
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)
+                          ],
+                        ),
+                      )),
+                )
+              ],
+            );
+          }));
 }
