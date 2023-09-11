@@ -24,7 +24,7 @@ class _MyNavigationBar2State extends State<MyNavigationBar2> {
   late PageController _pageController;
   List<Widget> _pages = [
     const HomePage(),
-    const AddPeoplePage(),
+    AddPeoplePage(),
     const NewMessagePage(),
     const SettingPage()
   ];
