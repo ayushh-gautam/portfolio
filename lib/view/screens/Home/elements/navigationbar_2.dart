@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, prefer_final_fields
 
 import 'package:flutter/material.dart';
-import 'package:portfolio/view/screens/Home/addpeoplepage.dart';
+import 'package:portfolio/view/screens/Home/addPeople/addpeoplepage.dart';
 import 'package:portfolio/view/screens/Home/pages/home/homepage.dart';
 
 import 'package:portfolio/view/screens/Home/pages/chats/newMessagepage.dart';
