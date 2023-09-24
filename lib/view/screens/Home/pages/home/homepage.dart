@@ -11,6 +11,7 @@ import 'package:portfolio/view/screens/loginScreen/Providers/homepageProvider.da
 import 'package:provider/provider.dart';
 
 import '../../elements/Timeline Tiles Elements/TimelineChild.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -87,10 +88,26 @@ class _HomePageState extends State<HomePage>
                                         'lib/assets/images/person.png',
                                         scale: 0.5,
                                       )
-                                    : Image.network(
-                                        data['photoUrl'],
-                                        scale: 0.5,
+                                    : CachedNetworkImage(
+                                        // we using cached network to save mage on device memory
+
+                                        imageUrl: data['photoUrl'],
+                                        height: 100,
+                                        placeholder: (ctx, url) => Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(200),
+                                            color: Colors.grey.shade300,
+                                          ),
+                                          height: 100,
+                                          width: 120,
+                                        ),
                                       ),
+
+                                // : Image.network(
+                                //     data['photoUrl'],
+                                //     scale: 0.5,
+                                //   ),
                               ),
                             ),
                           ),

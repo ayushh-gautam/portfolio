@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 //import section
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -10,7 +11,6 @@ import 'package:portfolio/elements/myText.dart';
 import 'package:portfolio/view/screens/Home/database/updateprofile.dart';
 import 'package:portfolio/view/screens/Home/elements/profileTile.dart';
 import 'package:portfolio/view/screens/Home/pages/profile/genderPage.dart';
-
 
 //----------- main clas ProfilePage-------------\\
 class ProfilePage extends StatefulWidget {
@@ -178,10 +178,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                                 'lib/assets/images/person.png',
                                                 scale: 0.5,
                                               )
-                                            : Image.network(
-                                                data['photoUrl'],
-                                                scale: 1,
-                                                fit: BoxFit.fill,
+                                            : CachedNetworkImage(
+                                                imageUrl: data['photoUrl'],
+                                                placeholder: (context, url) =>
+                                                    Container(
+                                                  height: 100,
+                                                  width: 100,
+                                                  color: Colors.grey,
+                                                ),
                                               )
                                     // child: ("$data['photoUrl']" == '')
                                     //     ? Image.asset(
